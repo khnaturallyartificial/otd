@@ -1,0 +1,46 @@
+<div class="topmaincont textcenter">
+ <div id="headimgnowrap">
+               <img src="/img/teamgb.gif" alt="" class="valignmiddle" />
+                <img src="/img/head.gif" alt="" class="valignmiddle" />
+               <img src="/img/wcl.gif" alt="" class="valignmiddle" />
+               </div><br/>
+	    <div id="registerformwrap">
+		*All fields are required.
+	    <form id="<?php  echo $this->form->getAttrib("name"); ?>" method="POST" action="/auth/register">
+		<?php
+		$count = 1;
+		foreach($this->form->getElements() as $el){
+		    $name = $el->getName();		    
+		    switch($count){
+			case 1 :
+			    echo '<table class="registrationtable"><tr><td class="texttop">'.$this->form->$name;
+			    break;
+			case 3 :
+			    echo $this->form->$name.'Please ensure that your email  <br/>address and contact number
+			    are valid.';
+			    break;
+			case 4 :
+			    echo '<br/><br/><br/><br/><a class="togglenext none">If you are a coach, please <strong>click here</strong></a><div class="hide">'.$this->form->coachcode . '</div></td>';
+			    break;
+			case 5 :
+			    echo '<td class="texttop">'.$this->form->$name;
+			    break;
+			case 11 :
+			    echo $this->form->$name.'</td></tr></table>';
+			    break;
+			default :
+			    echo $this->form->$name;
+			    break;
+		    }
+		    $count+=1;
+		    
+		    }
+		?>		
+	    </form>
+	    </div>
+	<br/>
+	<br/><br/>
+</div>
+
+<div id="pagediv"></div>
+

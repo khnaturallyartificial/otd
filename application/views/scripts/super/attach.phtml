@@ -1,0 +1,42 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+</td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+        <h1>Attach Athletes</h1>
+        <div class="line"></div>
+        <table style="width:100%;border:0px;">
+                       <tr>
+                                      <td style="width:40%;">
+                                                      <fieldset><legend>Athlete</legend><?php echo $this->athleteselect; ?></fieldset>
+                                      </td>
+                                      <td style="width:40%;">
+                                                      <fieldset><legend>Coach</legend><?php echo $this->coachselect; ?></fieldset>
+                                      </td>
+                                      <td style="width:20%;">
+                                                     <button id="attachathletetocoach" >Attach athlete</button>
+                                      </td>
+                       </tr>
+        </table>
+        
+        <div id="attachresult"></div>
+
+        <br/><br/>
+         
+
+          <h2>Coach List</h2>
+           <div class="line"></div>
+           <div class="floatright"><a class="none reload"><img src="/img/reload.png" alt="" /> Refresh List</a></div>
+           <i><span style="font-size:10px;">You can detach an athlete from a coach by pressing the icon next to their name</span></i><br/><br/>
+           <?php echo $this->coachathletelist; ?>
+        <div class="clear"></div>
+    </div>
+ </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

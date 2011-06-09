@@ -1,0 +1,431 @@
+
+               <?php 
+               $fincount = 0;
+               foreach($this->alldata as $ad){
+                              foreach($ad as $exerciserow){
+                                             $limcount = 0;
+                                             foreach($exerciserow as $exrowitem){
+                                                            
+                                                            $limcount += (int) $exrowitem["sets"];
+                                                            //echo $limcount;
+                                             }
+                                             //echo "end row";
+                                             if($fincount < $limcount){
+                                                            $fincount = $limcount;
+                                             }
+                              }
+               }
+
+
+               $limit = $fincount; //originally 14
+               ?>
+<?php
+if($this->printpage){
+               ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+                                  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+                                  <head>
+                                  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+                                  <title>Print Plan</title>
+                                  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+                                  <script type="text/javascript">
+                   $(document).ready(function(){
+                                  $(".hide").remove();
+                   });
+                   </script>
+
+<?php
+}
+?>
+<style>
+          <?php
+	if($this->hascss){
+	          echo '
+		.griddone{
+		line-height:16px;
+		background-color:#D6DE49;
+		}
+		.gridskipped{
+		line-height:16px;
+		background-color:#ca3030;
+		  }
+		
+		  
+	          ';
+	}
+          ?>
+          .gridcustom{
+		line-height:16px;
+		background-color:#ff6c00;
+		color:black;
+		padding-left:3px;
+		padding-right:3px;
+		
+		  }
+		  .gridfailed{
+		line-height:16px;
+		background-color:#000000;
+		color:#FFFFFF;
+		  }
+#printplantablestyle{
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                                           font-size:13px;
+                                                            }
+
+                                                            #printplantablestyle .date{
+                                                                           font-weight: bold;
+                                                            }
+
+
+                                                            #printplantablestyle .exid{
+                                                                           font-weight: bold;
+                                                                           font-size: 14px;
+                                                                           color:#000000;
+                                                                            border-right:4px solid;
+                                                            }
+
+                                                            #printplantablestyle table{
+                                                                           border:2px solid #6b6b6b;
+                                                                           width:100%;
+                                                                           table-layout: fixed;
+                                                                           border-collapse: collapse;
+                                                                           margin-bottom:5px;
+                                                                           <?php
+                                                                           if($this->printpage){
+                                                                                          echo 'font-size:7px;';
+                                                                           }
+                                                                           else{
+                                                                                          echo 'font-size:15px;';
+                                                                           }
+                                                                           ?>
+                                                                          
+                                                            }
+
+                                                            #printplantablestyle td{
+                                                                           background-color: #f5f5f5;
+                                                                           margin:0px;
+			               
+                                                                           color:#454545;
+                                                                           text-align: center;
+                                                                           border-right: 1px solid #858585;
+                                                                           border-bottom: 1px solid #858585;
+                                                                           line-height:10px;
+                                                                          
+                                                                           font-family: 'Arial Narrow',sans-serif;
+                                                                          <?php
+                                                                           if($this->printpage){
+                                                                                          echo 'padding:0px;';
+                                                                           }
+                                                                           else{
+                                                                                          echo 'padding:3px;';
+                                                                           }
+                                                                           ?>
+                                                            }
+                                                            .bigbtm{
+                                                                           border-bottom: solid 2px;
+                                                            }
+                                                            .doublebtm{
+                                                                           border-top: double;
+}
+<?php
+if($this->printpage){
+?>
+
+                                                            h2{
+                                                                           border-bottom: 1px dotted #545454;
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                            }
+                                                            .red{
+                                                                           color:#e44115;
+                                                                           font-size:13px;
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                            }
+                                                            <?php } ?>
+                                                            #printplantablestyle table .commentbox, #printplantablestyle .commentbox tr, #printplantablestyle .commentbox td{
+                                                                           border:none;
+                                                                           background:none;
+                                                                           text-align:left;
+                                                                           padding: 2px;
+                                                            }
+                                                            #printplantablestyle .commentbox{
+                                                                           margin:5px;
+                                                                           border:1px solid #c8c8c8 !important;
+                                                                           padding:5px;
+                                                                           height:40px;
+                                                                           color:#585858;
+                                                                           margin-bottom: 10px;
+                                                                           line-height: 10px;
+                                                                           vertical-align:top;
+                                                              }
+
+
+</style>
+<?php
+if($this->printpage){
+?>
+                                  </head>
+                                                 <body>
+                                                                <img src="http://otd.naturallyartificial.net/img/smallwcl.gif" alt="" style="float:right;"/>
+                                  <h2 style="margin:0px; font-size:14px;">Plan: <?php echo $this->plandata["planname"]; ?></h2>
+                                  <span class="red" style="font-size:10px;margin:0px;">Please fill empty boxes with the applied KGs or strikethrough which were not done.</span>
+<?php
+}
+?>
+<?php
+//echo var_dump($this->plandata);
+?>
+<div id="printplantablestyle">
+<?php
+$logs = new Application_Model_DbTable_TestLog();
+//$logs->log(var_export($this->detaillist,true));
+$numberrowcount = 0;
+$totalweight = 0;
+$totalreps = 0;
+foreach($this->alldata as $key => $e){?>
+
+                              <?php 
+                              $date = explode("-",$key);
+                              echo "<span class=\"date\">&raquo; ".date("l, d M Y",strtotime($key))."</span>";
+
+                              ?>
+<table>
+               <?php
+               $commentfin = "";
+               $comment = "";
+               $comment2 = "";
+               $morningdiv = false;
+               foreach($e as $key2 => $e2){ 
+                              if($numberrowcount == 0){
+                                             $numberrowcount = 1;
+                                             echo "<tr class=\"bigbtm\"><td class=\"exid\"> Ex.</td>";
+                                             for($i=0;$i<$fincount;$i++){
+                                                            echo "<td>".($i+1)."</td>";
+                                             }
+                                             echo "<td>Comment</td></tr>";
+		     
+                              }
+                              ?>
+               
+
+
+               <tr<?php
+                              if($morningdiv == false && preg_match("/pm/",$key2) == 1){
+                                             echo ' class="doublebtm"';
+					     $morningdiv = true;
+                              }
+                              //$morningdiv++;
+               ?>>
+                              <td class="exid" title="<?php
+	          $tempkey2 = $key2;
+                                             $ekeys = explode("/",$key2);
+                                             $keycount = 0;
+                                             foreach($ekeys as $ekey){
+                                                            if($keycount > 0){
+                                                                           echo " and ";
+                                                            }
+                                                            echo $this->exercisearray[(int) $ekey];
+                                                            $keycount ++;
+                                             }
+                              
+                              ?>"><?php echo str_replace("pm","",$key2);
+			      
+			      if($morningdiv == false){
+				  //echo "move to PM";
+			      }
+			      else{
+				  //echo "move to AM";
+			      }
+
+						//	echo $key2;
+			      ?>
+	          <img src="/img/asterisk.png" class="tickall" alt="" title="Mark all exercises on this row as done." />
+	          </td>
+                              <?php
+                              $count = 0;
+	          
+                              foreach($e2 as $key3 => $e3){  ?>
+                                             <td<?php
+                                             $marked = "";
+		     if($this->detaillist[$e3["exerciseplanid"]]["additionalcomment"]){
+		               
+		               if(!stristr($commentfin,$this->detaillist[$e3["exerciseplanid"]]["additionalcomment"])){
+			if($commentfin == ""){$commentfin.="&raquo; ";}
+			     $commentfin .= '['.str_replace("pm","",$tempkey2).'] '.$e3["weight"].'/'.$e3["reps"];
+			     if($e3["reps_com"]>0){$commentfin .= "/".$e3["reps_com"];}
+			     if($e3["reps_com2"]>0){$commentfin .= "/".$e3["reps_com2"];}
+			     $commentfin .=' '.$this->detaillist[$e3["exerciseplanid"]]["additionalcomment"] . '&nbsp;&nbsp;&nbsp;';
+		               }
+
+		     }
+                                             if($this->donelist[$e3["exerciseplanid"]]){
+	                
+		               if( $this->donelist[$e3["exerciseplanid"]] == "skipped" && $this->detaillist[$e3["exerciseplanid"]]["actual_weight"]==0 && $this->detaillist[$e3["exerciseplanid"]]["actual_total_reps"]==0){
+			     $marked = " gridfailed";
+		               }
+		               else{
+                                                           $marked = " grid".$this->donelist[$e3["exerciseplanid"]];
+		               }
+                                             }
+                                             echo ' class="epid'.$e3["exerciseplanid"].'"';
+                                             ?>><?php echo "<span class=\"hide setsfor".$e3["exerciseplanid"]."\">".$e3["sets"]."</span><span class=\"stylefor".$e3["exerciseplanid"].$marked."\"><span class=\"weightfor".$e3["exerciseplanid"]."\">".$e3["weight"]."</span>/<span class=\"repsfor".$e3["exerciseplanid"]."\">".$e3["reps"]."</span>";
+                                                            $totalreps += $e3["reps"];
+			$totalweight += $e3["weight"];
+			if($e3["reps_com"]>0){
+                                                                           echo "/<span class=\"repscomfor".$e3["exerciseplanid"]."\">".$e3["reps_com"]."</span>";
+			               $totalreps += $e3["reps_com"];
+                                                            }
+			//third exercise
+			if($e3["reps_com2"]!=NULL){
+                                                                           echo "/<span class=\"repscom2for".$e3["exerciseplanid"]."\">".$e3["reps_com2"]."</span>";
+			               $totalreps += $e3["reps_com2"];
+                                                            }
+                                                            echo "</span>";
+                                                            if($e3["comment"]){
+                                                                           $temp = "for ". $this->exercisearray[$e3["exerciseid"]] . "(".$e3["weight"]."/".$e3["reps"].") - " . $e3["comment"];
+                                                                          $temp2 = $e3["comment"];
+                                                                           if(stristr($comment,$temp) == false){
+                                                                                          $comment .= $temp . "<br/>";
+                                                                           }
+			               if(stristr($comment2,$tmp2)==false){
+				     $comment2 .= " ".$temp2;
+			               }
+                                                            }
+                                             $count++;
+                                             if($this->printpage != true && !$this->userid){echo '
+                                                                                          <br/><img src="/img/cross.png" alt="-" class="deleteexplan2">
+                                                                                          ';}
+                                             if(($this->printpage != true && $this->userid && $this->donelist[$e3["exerciseplanid"]] != "custom") && $this->hidetick == false){
+                                                                                          echo '<br/><img src="/img/tick.png" class="markdone2" alt="" title="Mark as completed as prescribed" />
+					<img src="/img/skip.png" class="markskipped2" title="Mark as modified (done more/less than prescribed?)" alt="">
+					<img src="/img/failed.png" class="markfailed" alt="" title="Failed Training" />';
+                                                                           }
+		     if($this->donelist[$e3["exerciseplanid"]] == "custom" && $this->hidetick == false){
+		               echo '<br/><img src="/img/cross.png" class="deletecustomexercise" title="Remove this non-prescribed exercise" alt="[X]">';
+		               
+		               if($this->detaillist[$e3["exerciseplanid"]]["additionalcomment"]){echo '<img src="/img/balloon.png" title="'.$this->detaillist[$e3["exerciseplanid"]]["additionalcomment"].'" alt="[?]"  />';}
+		     }
+                                             if($this->donelist[$e3["exerciseplanid"]]=="skipped"){
+		               if(!$this->detaillist[$e3["exerciseplanid"]]["actual_weight"] && !$this->detaillist[$e3["exerciseplanid"]]["actual_total_reps"] ){
+			     if($this->printpage != true){
+			     echo '<span class="modtext">Failed</span>';
+			     }
+		               }
+		               else{
+                                                            echo "<br/><span class=\"modtext\">Mod.".$this->detaillist[$e3["exerciseplanid"]]["actual_weight"]."/".
+                                                                    $this->detaillist[$e3["exerciseplanid"]]["actual_total_reps"];
+                                                            if((int)$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com"] > 0){
+                                                                    echo "/".$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com"];
+                                                            }
+			if((int)$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com2"] > 0){
+                                                                    echo "/".$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com2"];
+                                                            }
+			echo '</span>';
+		               }
+                                             }
+                                             ?></td>
+                                             <?php if((int)$e3["sets"] > 1){
+                                                            for($x=1;$x<((int)$e3["sets"]);$x++){
+                                                                           echo "<td";
+                                                                           echo ' class="epid'.$e3["exerciseplanid"].'"';
+                                                                           echo "><span class=\"hide setsfor".$e3["exerciseplanid"]."\">".$e3["sets"]."</span><span class=\"stylefor".$e3["exerciseplanid"].$marked."\"><span class=\"weightfor".$e3["exerciseplanid"]."\">".$e3["weight"]."</span>/<span class=\"repsfor".$e3["exerciseplanid"]."\">".$e3["reps"]."</span>";
+                                                                           if($e3["reps_com"]>0){
+                                                                                          echo "/<span class=\"repscomfor".$e3["exerciseplanid"]."\">".$e3["reps_com"]."</span>";
+                                                                           }
+			               if($e3["reps_com2"]>0){
+                                                                                          echo "/<span class=\"repscom2for".$e3["exerciseplanid"]."\">".$e3["reps_com2"]."</span>";
+                                                                           }
+                                                                           echo "</span>";
+                                                                           if($this->printpage != true && !$this->userid){echo '
+                                                                                          <br/><img src="/img/cross.png" alt="-" class="deleteexplan2">
+                                                                                          ';}
+                                                                           if(($this->printpage != true && $this->userid && $this->donelist[$e3["exerciseplanid"]] != "custom") && $this->hidetick == false){
+                                                                                          echo '<br/><img src="/img/tick.png" class="markdone2" alt="" title="Mark as completed as prescribed" />
+					<img src="/img/skip.png" class="markskipped2" alt="" title="Modifed Training" />
+					<img src="/img/failed.png" class="markfailed" alt="" title="Failed Training" />';
+                                                                           }
+			               if($this->donelist[$e3["exerciseplanid"]] == "custom" && $this->hidetick == false){
+		               echo '<br/><img src="/img/cross.png" class="deletecustomexercise" title="Remove this non-prescribed exercise" alt="[X]">';
+		               
+		               if($this->detaillist[$e3["exerciseplanid"]]["additionalcomment"]){echo '<img src="/img/balloon.png" title="'.$this->detaillist[$e3["exerciseplanid"]]["additionalcomment"].'" alt="[?]" />';}
+		     }
+                                                                           if($this->donelist[$e3["exerciseplanid"]]=="skipped"){
+                                                            if(!$this->detaillist[$e3["exerciseplanid"]]["actual_weight"] && !$this->detaillist[$e3["exerciseplanid"]]["actual_total_reps"] ){
+			     if($this->printpage != true){
+			     echo '<span class="modtext">Failed</span>';
+			     }
+		               }
+		               else{
+				     echo "<br/><span class=\"modtext\">Mod.".$this->detaillist[$e3["exerciseplanid"]]["actual_weight"]."/".
+                                                                    $this->detaillist[$e3["exerciseplanid"]]["actual_total_reps"];
+                                                            if((int)$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com"] > 0){
+                                                                    echo "/".$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com"];
+                                                            }
+			if((int)$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com2"] > 0){
+                                                                    echo "/".$this->detaillist[$e3["exerciseplanid"]]["actual_reps_com2"];
+                                                            }
+			echo '</span>';
+		               }
+                                             }
+                                                                           echo "</td>";
+                                                                           $count++;
+                                                            }
+                                             }
+                                             ?>
+                              <?php }
+                                             if($count<$limit){
+                                                            for($i=0;$i<($limit-$count);$i++){
+                                                                           echo "<td>&nbsp;</td>";
+                                                            }
+                                             }
+		     echo '<td>'.$comment2.'</td>';
+		     $comment2 = "";
+                              ?>
+               </tr>
+               <?php }               ?>
+</table>
+               <?php
+               if($commentfin != ""){echo '<fieldset class="fincom"><legend>Athlete Comments</legend>'.$commentfin.'</fieldset>';}
+if($this->printpage){
+?>
+              <table class="commentbox">
+                                                                           <tr>
+                                                                                          <td style="width:200px;">
+                                                                                                         Body weight: _______kg.<br/>
+                                                                                                         Notes:
+                                                                                          </td>
+                                                                                          <td style="width:240px;">
+                                                                                          Exercise intensity rating 0 - 10:_____<br/>
+                                                                                          <span style="font-size:8px;">Please record within 30 min of finishing training)</span>
+                                                                                          </td>
+                                                                                          <td>
+                                                                                          Coach Notes:
+                                                                                          </td>
+                                                                           </tr>
+                                                                           <tr>
+                                                                                           <td>
+                                                                                          </td>
+                                                                                          <td>
+                                                                                          </td>
+                                                                                          <td>
+                                                                                          <span class="commentblock"><?php echo $comment; ?></span>
+                                                                                          </td>
+                                                                           </tr>
+                                                            </table>
+
+
+<?php      }      }    ?>
+          <input type="hidden" value="<?php echo $totalweight?>" id="totweight"/>
+          <input type="hidden" value="<?php echo $totalreps; ?>" id ="totrep" />
+<?php echo $totalweight . "kg / ".$totalreps." reps";?>
+</div>
+<?php
+if($this->printpage){
+?>
+                                                 </body>
+                                  </html>
+<?php
+}
+?>

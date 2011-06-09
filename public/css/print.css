@@ -1,0 +1,52 @@
+body{
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style:italic;
+               font-size:12px;
+}
+
+.date{
+               font-weight: bold;
+}
+
+
+.exid{
+               font-weight: bold;
+               font-size: 17px;
+               color:#000000;
+                border-right:4px solid;
+}
+
+table{
+               border:2px solid #6b6b6b;
+               width:100%;
+               table-layout: fixed;
+               border-collapse: collapse;
+               margin-bottom:5px;
+}
+
+td{
+               background-color: #f5f5f5;
+               margin:0px;
+               color:#454545;
+               text-align: center;
+               border-right: 1px solid #858585;
+               border-bottom: 1px solid #858585;
+               line-height:15px;
+}
+
+.note{
+               margin:5px;
+               border:1px solid #c8c8c8;
+               padding:5px;
+               height:40px;
+               color:#585858;
+               margin-bottom: 10px;
+               line-height: 11px;
+}
+h2{
+               border-bottom: 1px dotted #545454;
+}
+.red{
+               color:#e44115;
+               font-size:15px;
+}

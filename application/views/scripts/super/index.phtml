@@ -1,0 +1,57 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+	          <div class="textcenter">
+		    <br/>
+		    <h5 class="message-head">&raquo; Global Chat</h5>
+		    <div id="message-body"></div>
+		    <select class="message-text" id="message-notify">
+	    <option value="">Notify (optional)</option>
+	    <?php
+	          foreach($this->users as $u){
+		echo '<option value="'.$u["userid"].'">'.ucfirst($u["name"]).' '.ucfirst($u["surname"]).'</option>';
+	          }
+	    ?>
+	              </select>
+	    <input type="text" class="message-text" id="message-text"/>
+	    <a id="message-submit">&nbsp;Submit&nbsp; </a><span class="refreshmessage">&nbsp</span>
+              </div>
+</td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+        <h1>Dashboard</h1>
+        <div class="line"></div>
+        <div>
+            <div class="floatleft width50percent">
+                <h2>Right now..</h2><div class="line"></div><i>
+                You have 0 message(s)<br/>
+                There are 13 plans created so far<br/>
+                There are 5 users<br/>
+                1 of which are coaches, and 4 are athletes<br/></i>
+            </div>
+
+            <div class="floatright width50percent">
+                <h2>Latest messages</h2><div class="line"></div>
+                    <?php
+                              $news = new Application_Model_DbTable_News();
+                              $n = $news->getNews(5);
+                              foreach($n as $ni) :
+                ?>
+                              <div class="messagelistitem">
+                                             <h3 class="messagehead"><?php echo $ni["heading"]; ?></h3><div class="linedotted"></div>
+                                             <div class="messagebody"><?php echo $ni["content"]; ?></div>
+                              </div>
+
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+ </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

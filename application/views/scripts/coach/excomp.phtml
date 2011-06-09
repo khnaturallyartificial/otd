@@ -1,0 +1,36 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="valigntop formenuhide" style="width:1%;">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Exercise Completion</h1>
+                   <h4>Please select an athlete name below and click Load to view their plans.</h4>
+                   <div class="line"></div>
+                   <select name="ath" id="athlist">
+                   <?php
+                   
+                              foreach($this->users as $u){
+                                             echo '<option value="'.$u["athleteid"].'-'.$u["planid"].'">'.ucfirst($u["name"]).' '.ucfirst($u["surname"]).'</option>';
+                              }
+                   ?>
+                                  </select>&nbsp;&nbsp;
+                   <img src="/img/load.png" class="loadplancompletion" alt="" />
+                   <img src="/img/plans.png" id="hidemenu" title="Hide/show the side menu (for unobstructive printing)." style="float:right;"/>
+                   <div class="line"></div>
+                   <div id="plangrid">
+                   </div>
+
+                   <div id="plangridcustom"></div>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+
+<div id="pagediv"></div>
+
+

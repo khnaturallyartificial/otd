@@ -1,0 +1,67 @@
+#dr, #dr legend{
+               font-weight: bold;
+    color:#ae5138 !important;
+    font-size: 12px;
+}
+#dr dt {
+               font-size: 12px;
+               font-style: italic;
+               color:#ce9e9c;
+}
+#dr input[type="text"], #dr input[type="textarea"]{
+               font-size: 14px;
+}
+#dr input[type="text"]{
+               height:15px;
+}
+#dr textarea{
+               width:98%;
+               height:100px;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-size: 12px;
+               color:#493329;
+               font-style: italic;
+}
+#intensityimg{
+               margin: 10px auto 0px 30px;
+}
+#dr #date{
+               width:180px;
+}
+#bw_morning, #bw_midday, #bw_evening, #urine_morning, #urine_midday, #urine_evening,
+#sleep_quality, #fluid, #sleep_quantity,#mental_recovery, #physical_recovery, #pre_training_energy,
+#muscle_soreness, #general_fatigue,#session1_duration, #session1_intensity, #session2_duration,
+#session2_intensity,#mhr
+{
+               width:40px;
+               text-align: center;
+}
+
+#dr .table720 {
+               width:720px;
+               margin:0px auto 0px auto;
+}
+#dr .table100{
+               width:100%;
+}
+#dr .w50{
+               width:380px;
+}
+#dr dd{
+               margin-left: 10px;
+}
+
+#dr .small{
+               font-size: 10px;
+}
+#dr img.floatright{
+               margin-left:16px;
+               margin-top:15px;
+}
+#dr #submitdailyreport{
+               width:100%;
+               height:50px;
+               font-size: 23px;
+               font-style: italic;
+               font-family: 'Trebuchet MS', sans-serif;
+}

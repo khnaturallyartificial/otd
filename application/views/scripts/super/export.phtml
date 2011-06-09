@@ -1,0 +1,26 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+</td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Export</h1>
+                   <h5>Please choose a database table to export to CSV file (You can also set the limit to the number of rows output)</h5>
+                   <form action="/super/export" method="POST">
+                                  <select name="tablename">
+                                                 <option value="dr">Daily report</option>
+                                                 <option value="mepv">Completed Exercises</option>
+                                  </select>
+
+                                  <input type="submit" value="export"/>
+                   </form>
+
+    </div>
+ </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

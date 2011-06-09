@@ -1,0 +1,104 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+ </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Illness Report Form</h1>
+                   <div class="line"></div>
+
+
+<h5>Please make sure you set the correct date!</h5>
+	              Date: <input name="pickdate" class="pickdate dateset" style="width:150px;border:1px solid grey;" value="<?php //echo date("Y-m-d")?>"/>
+                   <table class="rounded3" style="border:1px solid grey;border-radius:3px;"><tr><td>
+                                  
+                                  
+	              <div class="shownondateset">
+	              <table><tr>
+		    <td>Symptom</td>
+                                            <td>Severity</td>
+                                            <td>Type</td>
+                                            <td>Activity Level</td>
+		    <td>comment</td>
+		   
+		    <td></td>
+                                 </tr>
+	             <tr>
+		   <td>
+		             <select class="type" style="width:200px;">
+			   <?php
+			   $cat = "";
+			          foreach($this->illtypes as $ill){
+				if($ill["category"]!=$cat){
+				          if($cat!=""){echo '</optgroup>';}
+				          echo '<optgroup label="'.$ill["category"].'">';
+				          $cat = $ill["category"];
+				}
+				echo '<option value="'.$ill["id"].'">'.$ill["name"].'</option>';
+			          }
+			          echo '</optgroup>';
+			   ?>
+		             </select>
+		   </td>
+		   <td>
+		             <select class="sev">
+			   <option value="1">1 - Mild</option>
+			   <option value="2">2</option>
+			   <option value="3">3</option>
+			   <option value="4">4</option>
+			   <option value="5">5</option>
+			   <option value="6">6</option>
+			   <option value="7">7</option>
+			   <option value="8">8</option>
+			   <option value="9">9</option>
+			   <option value="10">10 - Severe</option>
+		             </select>
+		   </td>
+		   <td>
+		             <select class="dur"  style="width:80px;">
+			   <option value="1">New</option>
+			   <option value="2">Recurrent</option>
+			   <option value="3">Ongoing</option>
+			   <option value="4">Chronic</option>
+		             </select>
+		   </td>
+		   <td>
+		             <select class="act">
+			   <option value="1">Normal</option>
+			   <option value="2">Reduced</option>
+			   <option value="3">Modified</option>
+			   <option value="4">Unable to train</option>
+		             </select>
+		   </td>
+		   <td>
+		        <input id="illnesscomment" type="text" name="illcomment" class="rounded3 tiny
+			" style="width:200px;background-color:white;border-color: grey;"/>
+		   </td>
+		   <td>
+		             <span class="button adddailyillness">Add Illness</span>
+		   </td>
+	             </tr>
+	             <tr>
+		   <td colspan="6">
+		             <div class="hide" style="text-align: center; margin-top:-4px; " id="alertmessage">
+                              <div class="rounded3" id="inneralertmessage" style="font-size:13px;background-color:#ffba00;border:1px solid #6a5419;padding:4px;width:70%;margin-left:auto;margin-right:auto;
+                                    color:#421810;font-style:italic;"z></div>
+		</div>
+		   </td>
+	             </tr>
+	              </table>
+		    </div>
+	              </td></tr></table>
+
+
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+
+

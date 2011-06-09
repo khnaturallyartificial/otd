@@ -1,0 +1,63 @@
+<?php 
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('Online Training Diary');
+echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+               <head>
+    <?php echo $this->headMeta(); ?> 
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/site.css');
+    echo $this->headScript();
+    
+    ?>
+</head>
+<body>
+               
+               <div id="dialog" title="System Message"></div>
+<div id="top">
+    <div class="floatleft">
+	<a class="none" href="<?php echo $this->url(array('controller'=>'','action'=>'')); ?>">
+	<img src="/img/home.png" alt=""/>Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   
+    </div>
+    <?php $auth = Zend_Auth::getInstance();
+    if($auth->hasIdentity()){
+	$id = $auth->getIdentity();
+	$messages = new Application_Model_DbTable_Message();
+	$msg = $messages->newMessages();
+	echo '<div class="floatright">
+	<img src="/img/key.png" alt=""/>&nbsp;Logged in as <span id="usrnm">'.$id->username.'</span>&nbsp;<img src="/img/user-'.$id->role.'.png" alt=""/>
+	         <input type="hidden" id="hiderole" value="'.$id->role.'"/> <!--&nbsp;&nbsp;&nbsp;
+	<img src="/img/mail.png" alt=""/>&nbsp;&nbsp;'.$msg.' Message(s)-->
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$this->url(array('controller'=>'auth','action'=>'logout')).'">
+	<img src="/img/logout.jpg" alt=""/></a>
+    </div>';
+    }
+    ?>
+    
+</div>
+
+<div id="content">
+<div class="alertmessage" id="browserwarning">
+	It seems that you are using a very old browser, or have your JavaScript turned off. Please turn on JavaScript or download one of these
+	great browsers (Firefox or chrome are highly recommended): <br/>
+	<a href="http://www.mozilla.com/en-US/firefox/firefox.html" class=""><img src="/img/firefox.gif" alt=""/> Firefox</a>&nbsp;&nbsp;&nbsp;
+	<a href="http://www.google.com/chrome" class=""><img src="/img/chrome.gif" alt=""/> Chrome</a>&nbsp;&nbsp;&nbsp;
+	<a href="http://www.apple.com/safari/download/" class=""><img src="/img/safari.gif" alt=""/> Safari</a>&nbsp;&nbsp;&nbsp;
+	<a href="http://www.opera.com/" class=""><img src="/img/opera.gif" alt=""/> Opera</a>
+</div>
+    <?php echo $this->layout()->content; ?>
+</div>
+<div id="bottom">
+    Designed and developed by K.Hollingsworth. Some Icons are Copyright &copy; <a href="http://p.yusukekamiyamane.com/">Yusuke Kamiyamane.</a> All rights reserved.<br/>
+    <?php
+          if($this->layout()->cp == true ){
+	echo "&copy;2011 World Class Lifting Limited<br/>No unautorised reproduction in whole or in part.<br/>
+	          British Weight Lifting, 110 Cavendish, Headingly Campus, Leeds Metropolitan university. Leeds LS6 2QS";
+          }
+    ?>
+</div>
+               <div id="pagestatus"><img src="/img/loader.gif" alt=""/> working...</div>
+</body>
+</html>

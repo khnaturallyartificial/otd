@@ -1,0 +1,86 @@
+<div class="topmaincont pad10">
+          <style type="text/css">
+	    .rotate{
+	          font-size:8px;
+	          }
+	          #grid{
+		border:1px solid #717358;
+		text-align: center;
+}
+	          .rowcolor td{
+	          background-color:#E4E8BA;
+	          }
+
+              </style>
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+              <div class="hide msg textcenter"></div>
+              <h1>Daily report completion</h1>
+                   <h5>Here you can check which athletes have/haven't complete their daily reports.(Green = completed)</h5>
+                   <div class="linedotted"></div>
+              <?php/*
+              //Application_Model_DbTable_TestLog::log($this->donelist);
+              $date = time();
+	for($i=0;$i<30;$i++){
+	          echo '<h2>'.date("l j, F Y", $date-(86400*$i)).'</h2>
+		<div class="line"></div>';
+	          foreach($this->athletelist as $key => $al){
+		echo '<button value="'.$key.'"';
+		if(in_array($key,$this->donelist[$i])){
+		          echo ' class="getathinfo donedailyreport"';
+		}
+		else{
+		          echo ' class="getathinfo notdonedailyreport"';
+		}
+		echo '>'.$al.'</button>&nbsp;&nbsp;';
+	          }
+	          echo '<br/><br/><br/>';
+	}
+
+
+             */ ?>
+                   <table id="grid">
+	         <tr><td style="border-bottom:1px solid #A6AB76;"><span class="rotate">Name</span></td>
+	         <?php
+	         $date = time();
+	         for($i=0;$i<30;$i++){
+	                   echo '<td style="width:20px;border-bottom:1px solid #A6AB76;"><span class="rotate">'.date("d M Y", $date-(86400*$i)).'</span></td>';
+	         }
+	         ?>
+	         </tr>
+	         <?
+	         $count = 1;
+	         foreach($this->athletelist as $key => $ath){
+	                   echo '<tr';
+	                   echo ($count%2)==1? '' : ' class="rowcolor"';
+	                   echo '><td>'.$ath.'</td>';
+	                    for($i=0;$i<30;$i++){
+		          if(in_array($key,$this->donelist[$i])){
+			echo '<td><img src="/img/ticksq.png" alt=""/></td>';
+		          }
+		          else{
+			echo '<td> - </td>';
+		          }
+		}
+	                   echo '</tr>';
+	                   $count++;
+
+	         }
+	         ?>
+                   </table>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+
+<div id="pagediv"></div>
+
+

@@ -1,0 +1,35 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+               <div class="floatright red rounded textcenter width30percent draggable">
+	    Exercise plan you created<br/><div class="linedotted"></div>
+                        <div class="createdplans">
+                                       <?php $plans = new Application_Model_DbTable_Plan(); echo $plans->getPlans("id"); ?>
+                        </div>
+                        <div class="aestatus lightredfont"></div>
+               </div>
+                   <h1>Create a new exercise plan</h1>
+                                  <div class="line"></div>
+                                  <div class="width60percent textleft">
+                                  <?php echo $this->form; ?>
+                                  </div>
+                   <div id="exerciselist">
+                                  
+                                  <?php echo $this->exerciselist; ?>
+                   </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+
+<div id="pagediv"></div>
+
+

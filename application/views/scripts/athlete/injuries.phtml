@@ -1,0 +1,161 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+ </td> <td class="valigntop"><?php //echo $this->form; ?>
+    <div id="usercpcontent">
+                   <h1>Any Injuries or Niggles?</h1>
+                   <div class="line"></div>
+                   
+                   Date: <input type="text" class="pickdate dateset" id="date" name="pickdate" style="width:150px;" value="<?php //echo date("Y-m-d", time()); ?>"/><br/>
+<br/>
+                   <fieldset class="rounded3 shownondateset">
+                                  <legend>Injuries & niggles</legend>
+                                  ** If you have multiple injuries/niggles. You must add them separately.
+                                  <div id="entrypanel" class="warning">
+                                                 <table>
+                                                                <tr>
+                                                                               <td class="width400 texttop"> <!-- This TD is for entry forms -->
+                                                                                              <div id="ep_inj_or_niggle">
+                                                                                                             Is this an injury or a niggle?:<br/>
+                                                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                         <select id="inj_or_nig" class="rounded3">
+                                                                                                                        <option value="" selected="selected">--please select</option>
+                                                                                                                        <option value="niggle">Niggle</option>
+                                                                                                                        <option value="injury">Injury</option>
+                                                                                                         </select>
+                                                                                                         <a class="helpbtn"><img src="/img/question-balloon.png" alt="" title="<strong>Injury:</strong> Anything which
+                                                                                                                                 prevents you from completing prescribed training/competition or warrants you stopping
+                                                                                                                                 training altogether. <br/><br/><strong>Niggle:</strong> Training related pain (muscle,joint etc)
+                                                                                                                                 but does not prevent full execution of training."/></a>
+                                                                                                </div>
+                                                                                              <div id="ep_type">
+                                                                                                             Type: <br/>
+                                                                                                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                              <select id="type" class="rounded3">
+                                                                                                                             <option value="" selected="selected">--please select</option>
+                                                                                                                             <option value="1">New</option>
+                                                                                                                             <option value="2">Recurrent</option>
+                                                                                                                             <option value="3">Ongoing</option>
+                                                                                                                             <option value="4">Chronic</option>
+                                                                                                              </select>
+                                                                                                              <a class="helpbtn"><img src="/img/question-balloon.png" alt=""  title="<strong>New Injury:</strong> If not present within the
+                                                                                                                                      last 6 months. <br/> <strong>Recurrent:</strong> If injury has reappeared following 2 weeks of no symptoms.<br/>
+                                                                                                                                      <strong>Ongoing:</strong> reported previously but not yet fully resolved.<br/>
+                                                                                                                                      <strong>Chronic:</strong> Present over 2 months"/></a>
+                                                                                              </div>
+                                                                                              <div id="ep_body_part">
+                                                                                                             Body Part: <br/>
+                                                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="muscle_group" id="muscle_group" class="rounded3" disabled="disabled"/>
+                                                                                                         <br/>&laquo; Please click on the body part name on the right to choose <img src="/img/pointright.png" alt="" />
+                                                                                              </div>
+                                                                                              <div id="ep_tissue_affected">
+                                                                                                             Tissue Affected: <br/>
+                                                                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                             <select id="tissue" class="rounded3">
+                                                                                                                        <option value="" selected="selected">--please select</option>
+                                                                                                                      <option value="1">Muscle</option>
+                                                                                                                       <option value="2">Tendon</option>
+                                                                                                                       <option value="3">Ligament</option>
+                                                                                                                       <option value="4">Bone</option>
+                                                                                                             </select>
+                                                                                              </div>
+
+                                                                                              <div id="ep_pain_rating">
+                                                                                                             Pain Rating:<br/>
+                                                                                                             <span id="radio">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/img/smiley.png" alt="" />
+                                                                                                                            <input type="radio" id="radio1" name="pain_rating" value="1" /> <label for="radio1">1</label>
+                                                                                                                            <input type="radio" id="radio2"  name="pain_rating" value="2"/> <label for="radio2">2</label>
+                                                                                                                            <input type="radio" id="radio3"  name="pain_rating" value="3"/> <label for="radio3"> 3</label>
+                                                                                                                            <input type="radio" id="radio4"  name="pain_rating" value="4"/> <label for="radio4"> 4</label>
+                                                                                                                            <input type="radio" id="radio5"  name="pain_rating" value="5"/> <label for="radio5"> 5</label>
+                                                                                                                            <input type="radio" id="radio6"  name="pain_rating" value="6"/> <label for="radio6"> 6</label>
+                                                                                                                            <input type="radio" id="radio7"  name="pain_rating" value="7"/> <label for="radio7">7</label>
+                                                                                                                            <input type="radio" id="radio8"  name="pain_rating" value="8"/> <label for="radio8"> 8</label>
+                                                                                                                            <input type="radio" id="radio9"  name="pain_rating" value="9"/> <label for="radio9"> 9</label>
+                                                                                                                            <input type="radio" id="radio10"  name="pain_rating" value="10"/>  <label for="radio10">10</label>
+                                                                                                                           <img src="/img/smiley-sad.png" alt="" />
+                                                                                                             </span>
+                                                                                              </div>
+
+                                                                                                <div id="ep_training_modified">
+                                                                                                                            Training Modified?:<br/>
+                                                                                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                                                        <select id="training_modified" class="rounded3">
+                                                                                                                                       <option value="" selected="selected">--please select</option>
+                                                                                                                                       <option value="a">No</option>
+                                                                                                                                       <option value="b">Slight Modification</option>
+                                                                                                                                       <option value="c">Prescribed exercises not completed</option>
+                                                                                                                                       <option value="d">Unable to train</option>
+                                                                                                                        </select>
+                                                                                                                        <a class="helpbtn"><img src="/img/question-balloon.png" alt="" title="Did the injury or niggle require you or your coach to alter 
+                                                                                                                                            training load, exercises or did it inhibit you from completing
+                                                                                                                                            training at desired intensity?" /></a>
+                                                                                                             </div>
+                                                                                                             <div id="ep_other_info">
+                                                                                                                            Other info:<br/>
+                                                                                                         <textarea rows="2" cols="20" id="other_info" ></textarea>
+
+                                                                                                         <br/>  <br/>
+                                                                                                                             <span id="addinjtolist">Add this injury/niggle to the list</span>
+                                                                                                             </div>
+                                                                               </td>
+                                                                               <td> <!-- This TD is for body part chart -->
+                                                                                              <div class="muscleill">
+                                                                                                             <div class="aleft nopad floatleft">
+                                                                                                                            <img src="/img/musclelist1.jpg" alt="" name="Head" class="musimg"/><br/>
+
+                                                                                                                            <img src="/img/musclelist3.jpg" alt="" name="Neck" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist4.jpg" alt="" name="Shoulder" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist5.jpg" alt="" name="Chest" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist6.jpg" alt="" name="Elbow" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist9.jpg" alt="" name="Lower Arm" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist10.jpg" alt="" name="Wrist" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist12.jpg" alt="" name="Abdomin" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist15.jpg" alt="" name="Hip" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist16.jpg" alt="" name="Groin" class="musimg"/><br/>
+
+                                                                                                                            <img src="/img/musclelist19.jpg" alt="" name="Front Thigh" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist20.jpg" alt="" name="Knee" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist23.jpg" alt="" name="Lower Leg" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist24.jpg" alt="" name="Ankle" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist25.jpg" alt="" name="Foot" class="musimg"/>
+                                                                                                             </div>
+
+                                                                                                         <div class="aright nopad floatright">
+                                                                                                                            <img src="/img/musclelist2.jpg" alt="" name="Spine (Cervical)" class="musimg"/><br/>
+
+                                                                                                                            <img src="/img/musclelist7.jpg" alt="" name="Upper Back" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist8.jpg" alt="" name="Spine (Thoracic)" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist11.jpg" alt="" name="Mid Back" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist13.jpg" alt="" name="Spine (Lumbar + Sacral)" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist14.jpg" alt="" name="Lower Back" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist17.jpg" alt="" name="Buttocks" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist18.jpg" alt="" name="Back Thigh" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist21.jpg" alt="" name="Calf" class="musimg"/><br/>
+                                                                                                                            <img src="/img/musclelist22.jpg" alt="" name="Achilles" class="musimg"/>
+
+                                                                                                             </div>
+                                                                </div>
+
+                                                                               </td>
+                                                                </tr>
+                                                 </table>
+
+                                  </div>
+                                  <div class="line"></div>
+                                  <h3 title="Below is the list of injuries and niggles">Injury/niggle list</h3>
+                                   <div id="injlist">None</div>
+                                   <span class="btn floatright" style="font-size:12px; line-height: 8px;" id="submitinjform">&nbsp;&nbsp;Submit injuries/niggles &raquo;&nbsp;&nbsp;<br/></span>
+
+                   </fieldset>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+

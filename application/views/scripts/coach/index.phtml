@@ -1,0 +1,66 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+              
+    </div>
+	              <div class="textcenter">
+		    <br/>
+		    <h5 class="message-head">&raquo; Global Chat</h5>
+		    <div id="message-body"></div>
+	<select class="message-text" id="message-notify">
+	    <option value="">Notify (optional)</option>
+	    <?php
+	          foreach($this->users as $u){
+		echo '<option value="'.$u["userid"].'">'.ucfirst($u["name"]).' '.ucfirst($u["surname"]).'</option>';
+	          }
+	    ?>
+	              </select>
+	    <input type="text" class="message-text" id="message-text"/>
+
+	    <a id="message-submit">&nbsp;Submit&nbsp; </a>
+	    <span class="refreshmessage">&nbsp</span>
+              </div>
+    </td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+                   <div class="floatright">
+                                  <!--img src="/img/smallteamgb.gif" alt="" /-->
+                                  <img src="/img/smallwcl.gif" alt="" />
+                   </div>
+        <h1>Dashboard</h1>
+        <div class="line"></div>
+        <div>
+            <div class="floatleft width50percent">
+                <h2>Right now..</h2><div class="line"></div><i>
+                You have created <?php echo $this->plancount; ?> plan(s)<br/>
+                There are <?php echo $this->athletecount; ?> athletes training under you<br/>
+                </i>
+            </div>
+            
+            <div class="floatright width50percent">
+                <h2>Latest messages</h2><div class="line"></div>
+                <?php
+                              $news = new Application_Model_DbTable_News();
+                              $n = $news->getNews(5);
+                              foreach($n as $ni) :
+                ?>
+                              <div class="messagelistitem">
+                                             <h3 class="messagehead"><?php echo $ni["heading"]; ?></h3><div class="linedotted"></div>
+                                             <div class="messagebody">
+                                             <span class="newsdate"><?php echo $ni["date"]; ?></span><br/>
+                                             <?php echo $ni["content"]; ?></div>
+                              </div>
+
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+                              </td></tr></table>
+    
+    
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

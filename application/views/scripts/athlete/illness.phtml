@@ -1,0 +1,75 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+              <div>asdf</div>
+    </div>
+ </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Weekly Illness Form</h1>
+                   <div class="line"></div>
+                   
+                   
+                   
+                   <fieldset class="rounded3">
+                                  <legend>Illness</legend>
+                                  <h5>Please report all illness you had last week... &raquo; <span class="redfont">Last week</span>'s start date: <span id="lastweekstartdate"><?php echo $this->lastweekstartdate; ?></span>
+                                   </h5>
+                                  <table>
+                                  <?php
+                                  $cat = "";
+                                             foreach($this->illtypes as $it){
+                                                            if($it["category"] != $cat){
+                                                                           $cat = $it["category"];
+                                                                           echo '<tr><td colspan="2"><h3>'.$cat.'</h3></td>
+                                                                                          <td>Severity</td>
+                                                                                          <td>Duration (Days)</td>
+                                                                                          <td>Activity Level</td>
+                                                                                          </tr>
+                                                                                          ';
+                                                            }
+                                                            echo '<tr><td>'.$it["name"].'</td>
+                                                                           <td><input type="checkbox" id="'.$it["id"].'" class="injenable"/></td>
+                                                                                          <td><select disabled="disabled" class="'.$it["id"].'sev"><option value="1">Mild</option><option value="2">Moderate</option><option value="3">Severe</option></select></td>
+                                                                                          <td><select disabled="disabled" class="'.$it["id"].'dur"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option></select></td>
+                                                                                          <td><select disabled="disabled" class="'.$it["id"].'act"><option value="1">Normal</option><option value="2">Reduced</option><option value="3">Went to bed</option></select></td>
+                                                                           ';
+
+                                             }
+                                  ?></table>
+                   </fieldset>
+
+
+                   <table>
+                                  <tr class="texttop">
+                                                 <td class="width70percent">
+                                                                <fieldset class="rounded3">
+                                                                           <legend>Max snatch & max C/J prediction</legend>
+                                                                           <h5>&raquo;<span class="redfont">This week</span>'s start date: <span id="thisweekstartdate"><?php echo $this->thisweekstartdate; ?></span></h5>
+                                                                               <h4>Please report  max snatch and C&amp;J you feel that you could do in your current physical state.</h4>
+                                                                               Predicted Current Max. (Snatch): <input id="predicted_snatch" name="max_snatch" type="text" class="rounded3"/><br/>
+                                                                               Predicted Current Max. (C &amp; J): <input id="predicted_cj" name="max_cj" type="text" class="rounded3"/><br/>
+                                                                               Current Body weight (kg.): <input id="bw" name="bodyweight" type="text" class="rounded3" /><br/>
+                                                                </fieldset>
+                                                 </td>
+                                                 <td class="width30percent">
+                                                                <fieldset class="rounded3">
+                                                                               <legend>Submit Form</legend>
+                                                                               Please ensure the above info is correct before submitting<br/>
+                                                                               <!--<button id="ihavechecked">These info are all correct!</button>-->
+                                                                               <button id="submitthisweeklyform">Submit this data now</button>
+                                                                </fieldset>
+                                                 </td>
+                                  </tr>
+                   </table>
+
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+
+

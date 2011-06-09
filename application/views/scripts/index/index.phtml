@@ -1,0 +1,28 @@
+<div id="indexcontent">
+    <div id="indexmain">
+
+        <a href="<?php echo $this->url(array('controller'=>'auth','action'=>'login')); ?>"><img src="/img/haveacc.gif" alt="" class="haveaccbtn" /></a><br/>
+        <a href="<?php echo $this->url(array('controller'=>'auth','action'=>'register')); ?>"><img src="/img/signup.gif" alt="" class="signupbtn" /></a>
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="/img/smallteamgb.gif" alt="" />
+                  &nbsp;
+        <img src="/img/smallwcl.gif" alt="" />
+    </div>
+</div>
+
+<div id="pagediv">
+</div>
+
+<div class="indexbottomcontent">
+    <div class="floatleft">
+        <img src="/img/indexnewsbadge.jpg" alt="" />
+    </div>
+    <div class="floatright">
+        <img src="/img/rss.jpg" alt="" />
+    </div>
+    
+   <?php echo $this->news; ?>
+    
+</div>
+
+<div class="clear"></div>

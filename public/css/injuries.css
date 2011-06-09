@@ -1,0 +1,50 @@
+.pickdate, #muscle_group,#pain_rating {
+               width:100px !important;
+               height:13px !important;
+               padding:3px !important;
+               font-size:12px !important;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style:italic;
+               color: #3b3737;
+               background-color:#FFFFFF  !important;
+}
+
+.muscleill{
+               width:426px;
+               height:319px;
+               background-image:url(/img/musclebg.jpg);
+               padding:0px;
+               background-color:#000000;
+}
+.aleft{
+               text-align: left;
+}
+.aright{
+               text-align: right;
+}
+.nopad{
+               padding:none;
+}
+.highlighttd {
+               background-color:#d2a9a9;
+
+}
+#entrypanel td{
+               padding: 5px;
+}
+#other_info{
+               font-size:11px;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style:italic;
+               width:97%;
+}
+.injblock{
+               background-color: #c06863;
+               border: 2px solid #903a36;
+               padding: 4px;
+               margin: 3px;
+}
+.injdetail{
+               color: #e2b7b5;
+               border-bottom: dashed 1px #e2b7b5;
+}

@@ -1,0 +1,256 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+ </td> <td class="valigntop">
+    <div id="usercpcontent">
+<input type="hidden" value="<?php echo $this->userid;  ?>" id="userid" />
+<h1>My progress</h1>
+<div class="line"></div>
+<button id="openallgraph">Show all graphs</button>
+<button id="closeallgraph">Hide all graphs</button><br/>
+<button id="gd_trainingload_btn" class="graphbtn">Show/Hide Training Load</button>
+<button id="gd_totalload_btn" class="graphbtn">Show/Hide Total Load</button>
+<button id="gd_totalloaddaily_btn" class="graphbtn">Show/Hide Total Load (Daily)</button>
+<!--<button id="gd_ratio_btn" class="graphbtn">Show/Hide S/W Ratio</button>-->
+<!--<button id="gd_monotony_btn" class="graphbtn">Show/Hide Monotony & Strain</button>-->
+<button id="gd_fatigue_btn" class="graphbtn">Show/Hide Fatigue & Recovery</button>
+<button id="gd_sleepquantity_btn" class="graphbtn">Show/Hide Sleep quantity</button>
+<button id="gd_weighthydration_btn" class="graphbtn">Show/Hide Weight&Hydr.</button>
+
+
+<div class="graphdiv hide" id="gd_trainingload">
+               <h3>Training Load</h3>
+                  <?php echo ' <img src="'.$this->images[0].'" alt="" id="chart0" />'; ?>
+
+                <div class="graph">
+                                  <table>
+                                                 <tr>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph0_startdate" name="grapho_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph0_enddate" name="graph0_enddate" class="rounded3"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph0_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph0_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+
+
+                   </div>
+                  </div>
+
+<div class="graphdiv hide" id="gd_totalload">
+               <h3>Total Load / Average Load</h3>
+            <?php   echo '<img src="'.$this->images[1].'" alt="" id="chart5" />   ';                ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                              <!--  <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph5_startdate" name="graph5_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph5_enddate" name="graph5_enddate" class="rounded3"/>
+                                                                               </fieldset> -->
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph5_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph5_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>
+
+<div class="graphdiv hide" id="gd_totalloaddaily">
+               <h3>Total Load / Average Load</h3>
+            <?php   echo '<img src="/chart/index/mode/drawchart_averagedaily/userid/'.$this->userid.'" alt="" id="chart30" />   ';                ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph30_startdate" name="graph30_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph30_enddate" name="graph30_enddate" class="rounded3"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph30_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph30_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>
+<!--
+<div class="graphdiv hide" id="gd_ratio">
+               <h3>Strength / Weight Ratio</h3>
+               <?php   echo '<img src="/chart/index/mode/drawchart_ratio/userid/'.$this->userid.'" alt="" id="chart8" />   ';                ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph8_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph8_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>-->
+<!--<div class="graphdiv hide" id="gd_monotony">
+               <h3>Monotony & Strain</h3>
+<?php   echo '<img src="/chart/index/mode/drawchart_monotony/userid/'.$this->userid.'" alt="" id="chart6" />   ';         ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                             
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph6_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph6_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>-->
+
+<div class="graphdiv hide" id="gd_fatigue">
+               <h3>Fatigue and Recovery</h3>
+               <?php   echo '<img src="'.$this->images[2].'" alt="" id="chart2" />   ';                ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph2_startdate" name="graph2_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph2_enddate" name="graph2_enddate" class="rounded3"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph2_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph2_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                                 <tr>
+                                                                <td colspan="3">
+                                                                               <fieldset>
+                                                                                              <legend>Include in graph</legend>
+                                                                                              <label id="cb1"> <input type="checkbox" id="sq" checked="checked"  class="gen">Sleep quality</label>
+                                                                                              <label id="cb2"> <input type="checkbox" id="mr" checked="checked" class="gen">Mental Recovery</label>
+                                                                                              <label id="cb3"> <input type="checkbox" id="pr" checked="checked" class="gen">Physical Recovery</label><br/>
+                                                                                              <label id="cb4"> <input type="checkbox" id="pte" checked="checked" class="gen">Pre Training Energy</label>
+                                                                                              <label id="cb5"> <input type="checkbox" id="ms" checked="checked" class="gen">Muscle Soreness</label>
+                                                                                              <label id="cb6"> <input type="checkbox" id="gf" checked="checked" class="gen">General Fatigue</label>
+                                                                               </fieldset>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>
+
+<div class="graphdiv hide" id="gd_sleepquantity">
+               <h3>Sleep quantity</h3>
+               <?php   echo '<img src="/chart/index/mode/drawchart_sleepquan/userid/'.$this->userid.'" alt="" id="chart7" />   ';      ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph7_startdate" name="graph7_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph7_enddate" name="graph7_enddate" class="rounded3"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph7_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph7_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>
+
+<div class="graphdiv hide" id="gd_weighthydration">
+               <h3>Body weight & Hydration</h3>
+               <?php   echo '<img src="/chart/index/mode/drawchart_weightHydration/userid/'.$this->userid.'/bwm/1/bwe/1/ue/1/um/1/" alt="" id="chart20" />   ';                ?>
+                <table class="graph">
+                                                 <tr>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Date Range</legend>
+
+                                                                                              Start: <input type="text" id="graph20_startdate" name="graph2_startdate" class="rounded3"/>
+                                                                                          End: <input type="text" id="graph20_enddate" name="graph2_enddate" class="rounded3"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend>Display limit</legend>
+                                                                                              <input type="text" id="graph20_limit" title="Maximum number of date displayed on X-axis" class="rounded3" value="10"/>
+                                                                               </fieldset>
+                                                                </td>
+                                                                <td>
+                                                                               <a id="setgraph20_params">Reload Graph &raquo;</a>
+                                                                </td>
+                                                 </tr>
+                                                 <tr>
+                                                                <td colspan="3">
+                                                                               <fieldset>
+                                                                                              <legend>Include in graph</legend>
+                                                                                              <label id="wh1"> <input type="checkbox" id="bwm" checked="checked" class="bh">Body weight (Morning)</label>
+                                                                                              <label id="wh2"> <input type="checkbox" id="bwe" checked="checked" class="bh">Body weight (Evening)</label>
+                                                                                              <label id="wh3"> <input type="checkbox" id="um" checked="checked" class="bh">Urine (Morning)</label><br/>
+                                                                                              <label id="wh4"> <input type="checkbox" id="ue" checked="checked" class="bh">Urine (Evening)</label>
+                                                                               </fieldset>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+ </div>
+
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>

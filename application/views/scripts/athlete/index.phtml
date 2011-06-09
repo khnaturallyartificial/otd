@@ -1,0 +1,174 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+              <br/><br/><div style="font-style:italic;"><h3>Past plans</h3><div class="linedotted"></div>
+	    
+    <?php
+              foreach($this->history as $his){
+	    echo '<button class="planhistbutton" value="'.$his["planid"].'">'.$his["planname"].'</button><br/>';
+              }
+              ?></div>
+                   <input type="hidden" id="userid" value="<?php echo $this->userid; ?>"/>
+                   <input type="hidden" id="planid" value="<?php echo $this->planid; ?>"/>
+    </div>
+          <div id="links" class="floatleft" >
+	<a href="http://www.britishweightlifting.org"><img src="/img/link-bwl.png" alt="Visit British Weight Lifting" /></a><br/>
+	<a href="http://www.dartfish.tv/Login.aspx"><img src="/img/link-dartfish.png" alt="Visit dartfish TV" /></a><br/>
+	<a href="http://www.mac-nutrition.com/"><img src="/img/link-mac.png" alt="Visit Mac-Nutrition" /></a><br/>
+	<a href="http://www.youtube.com"><img src="/img/link-youtube.png" alt="Visit Youtube" /></a><br/>
+          </div>
+	          <div class="textcenter">
+		    <br/>
+		    <h5 class="message-head">&raquo; Global Chat</h5>
+		    <div id="message-body">asdfasdf<br/>asdfasd<br/>asdf</div>
+		    <select class="message-text" id="message-notify">
+	    <option value="">Notify (optional)</option>
+	    <?php
+	          foreach($this->users as $u){
+		echo '<option value="'.$u["userid"].'">'.ucfirst($u["name"]).' '.ucfirst($u["surname"]).'</option>';
+	          }
+	    ?>
+	              </select>
+	    <input type="text" class="message-text" id="message-text"/>
+	    <a id="message-submit">&nbsp;Submit&nbsp; </a><span class="refreshmessage">&nbsp</span>
+              </div>
+ </td> <td class="valigntop">
+                
+    <div id="usercpcontent">
+                   <div style="float:right;z-index:999;">
+                                  <!--<img src="/img/smallteamgb.gif" alt="" />-->
+                                  <img src="/img/smallwcl.gif" alt="" />
+
+                   </div>
+        <h1>Dashboard</h1>
+        <div class="line"></div>
+        <div>
+	   <div>
+	             <h2>Latest Message</h2>
+	             
+	             <div id="tickercontainer" style="overflow:hidden;
+	                  line-height: 13px;font-size:11px;padding:3px;color:#7f140f;
+	                  background-color:#ffba00;border:1px solid #cf6713;" class="rounded3">
+	             <?php
+                              $news = new Application_Model_DbTable_News();
+                              $n = $news->getNews(1);
+                              foreach($n as $ni) :
+                ?>
+                [<?php echo $ni["date"]; ?>] <?php echo str_replace("\\'","'",$ni["content"]); ?>
+
+                <?php endforeach; ?>
+	 
+	             </div>
+
+		   <!-- style="margin-right:310px;"-->
+                <h2>To do today!</h2><div class="line"></div>
+                
+                
+                <?php                
+                if(true){ //$this->dailyalert == true ?>
+                               <div id="checklist" class="rounded3">
+
+		 <?php
+	          if(!empty($this->forgotdailyreport)){
+		?>
+		<div style="float:right;max-width:300px;background-color:#d3d18f;padding:5px;text-align: right;" >
+		          <h3>Missing Daily reports (Last 20 days):</h3>
+		          <?php
+		          foreach($this->forgotdailyreport as $dri){
+			echo '<a href="/athlete/dailyreport/presetdate/'.$dri.'" class="missingdailyreport">'.$dri.'</a> ';
+		          }
+		          ?>
+		</div>
+		<?php
+	          }
+	    ?>
+                               (1) Complete daily report<br/>
+	           (2) Report illness (if any)<br/>
+	           (3) Report injuries &amp; niggles (if any)<br/>
+	           (4) Complete training programme below<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;(a) Tick if completed as prescribed<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;(b) Tick modified if training is altered<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;(c) If done extra exercises (not prescribed), report it using the button below
+                
+	    
+
+
+	           </div>
+                <?php } ?>
+                
+
+                <table id="customexbtn" class="redness" style="width:99%;"><tr><td><span class="noprestext togglenext"><a class="none">No prescribed training plan? Please report <strong>here</strong></a></span>
+                <div id="customexform">
+                               <div class="line"></div>
+                               <!--**under construction -->
+                               <div class="customformstyle">
+                                              <?php
+
+                                                            //echo $this->customform;
+                                              echo $this->customform->date;
+                                              echo $this->customform->exerciseid;
+                                              echo $this->customform->weight;
+                                              echo $this->customform->reps;
+		      echo '<span class="togglenext btn clearex2">Combined exercise?</span><span class="hide">';
+		      echo $this->customform->exerciseid_com;
+		      echo $this->customform->reps_com;
+		      
+		      echo '<span class="togglenext btn clearex3">Third com. exercise? **requires the second exercise/reps to be filled in</span><span class="hide">';
+		      echo $this->customform->exerciseid_com2;
+		      echo $this->customform->reps_com2;
+		      echo '</span></span>';
+                                              echo $this->customform->sets;
+		      echo '<label><input type="checkbox" id="am_or_pm" name="am_or_pm" value="1"> PM session?</label><br/>';
+		      echo $this->customform->abf;
+		      echo $this->customform->additionalcomment;
+
+                                              ?>
+                                              <br/>
+                                              <div class="btn" id="submitcustomexercise">submit non-prescribed training plan.</div>
+                                              <div style="color:#925656; font-size:11px;" id="customresult"></div>
+                              </div>
+                </div>
+	      </td></tr></table>
+                <div id="pastplan" class="hide" style="display:table;width:98%">
+                </div>
+                
+                <br/>
+                <a href="print/printplan2/planid/<?php echo $this->planid; ?>/printpage/1"><img src="/img/printer.png" alt="" title="Print plan" /> Print</a>
+                <a href="print/printplan2/planid/<?php echo $this->planid; ?>/printpage/1/hascss/1"><img src="/img/printertag.png" alt="" title="Print plan with marked exercises." /> Print (marked)</a>
+                
+                <div id="plangrid">
+
+                </div>
+
+                <div id="plangridcustom">
+	      
+                </div>
+                <ul id="exercisesinthisplan">
+                <i>
+                               <?php //echo $this->todotoday; ?>
+                </i>
+                </ul>
+                
+                <!--<h2>Yesterday</h2><div class="line"></div>-->
+                	<ul class="exercisesinthisplan">
+              		<?php echo $this->todoyesterday; ?>
+              		</ul>
+                <a class="refreshprintplan">&nbsp</a><a class="refreshprintplancustom">&nbsp</a>
+                
+            </div>
+                       
+            
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+<?php echo $this->sql;?>
+
+

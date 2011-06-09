@@ -1,0 +1,199 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+              <script type="text/javascript">
+	    $(document).ready(function(){
+	              $("#date").change(function(){
+	          $(".table720").slideDown("fast");
+	    });
+	    });
+
+              </script>
+    </div>
+ </td> <td class="valigntop"><?php //echo $this->form; ?>
+    <div id="usercpcontent">
+                   <h1>Daily report</h1>
+                   <div class="line"></div>
+                   <h5>The date in the drop-down calendar is automatically set to today. If you know that you may
+                   have forgotten to do the report for a certain date, click on the text field and choose the date
+                   from the calendar.</h5>
+                   <div class="linedotted"></div>
+                   <div id="dr" class="centermargin"><form method="POST" action="/athlete/dailyreport" name="daform">
+	                   Date: <?php echo $this->form->date; ?>
+                                  <table class="table720 <?php if($this->failedvalidate == false && !$this->alreadyhasdate){echo 'hide';}?>">
+                                                 <tr>
+                                                                <td colspan="2">
+                                                                               <div class="warning rounded3">If you are have any injuries / niggles, you MUST also fill in an injuries/niggles form (found on the left, under Injuries
+                                                                           Report</div>
+                                                                </td>
+                                                 </tr>
+                                                 <tr>
+                                                                <td class="w50">
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend class="legendboldred">Body Weight (kg.) & Urine colour</legend>
+                                                                                              <img src="/img/urinechart.gif" class="floatright" alt="" />
+                                                                                              <dl class="floatleft"><dt>Morning: </dt>
+                                                                                              <dd><span class="small">weight</span>
+                                                                                                             <!--<img src="/img/down.gif" class="downbtn"alt=""/>-->
+                                                                                                             <input type="hidden" value="<?php echo $this->form->bw_morning->getValue() - 5; ?>" />
+                                                                                                             <?php echo $this->form->bw_morning; ?>
+                                                                                                             <input type="hidden" value="<?php echo $this->form->bw_morning->getValue() + 5; ?>" />
+                                                                                                             <!--<img src="/img/up.gif" class="upbtn"alt=""/> kg.*-->
+
+					         <span class="small">urine </span><?php echo $this->form->urine_morning; ?>
+				              </dd>
+                                                                                              
+                                                                                              <dt>Evening:</dt><dd><span class="small">weight </span> 
+                                                                                                             <!--<img src="/img/down.gif" class="downbtn"alt=""/>-->
+                                                                                                              <input type="hidden" value="<?php echo $this->form->bw_evening->getValue()-5; ?>" />
+                                                                                                             <?php echo $this->form->bw_evening; ?>
+                                                                                                              <input type="hidden" value="<?php echo $this->form->bw_evening->getValue()+5; ?>" />
+                                                                                                             <!--<img src="/img/up.gif" class="upbtn"alt=""/> kg. *-->
+					         
+					          <span class="small">urine </span><?php echo $this->form->urine_evening; ?>
+				              </dd>
+                                                                                              </dl>
+
+                                                                                              <dl class="floatright" style="position:absolute;z-index:999;">
+                                                                                              <dt>&nbsp;</dt><dd></dd>
+                                                                                              
+                                                                                              <dt>&nbsp; </dt><dd></dd>
+                                                                                              </dl>
+                                                                                              
+                                                                               </fieldset>
+
+                                                                               <fieldset>
+                                                                                              <legend class="legendboldred">Training Duration & Intensity</legend>
+                                                                                              Session 1<br/>
+                                                                                              
+                                                                                              <span class="small">Duration (mins)</span><?php echo $this->form->session1_duration; ?>*
+                                                                                              <span class="small">Intensity </span><?php echo $this->form->session1_intensity; ?>*
+                                                                                             <br/>
+                                                                                             <div class="line"></div>
+                                                                                              Session 2<br/>
+                                                                                               
+                                                                                              <span class="small">Duration (mins)</span><?php echo $this->form->session2_duration; ?>
+                                                                                             <span class="small">Intensity </span><?php echo $this->form->session2_intensity; ?>
+                                                                                           <img src="/img/intensity.gif" alt="" id="intensityimg"/>
+                                                                               </fieldset>
+
+                                                                               <fieldset>
+                                                                                              <legend class="legendboldred">Comment</legend>
+                                                                                              [e.g. feelings, medication taken if any etc.]
+                                                                                              <?php echo $this->form->comment; ?>
+                                                                               </fieldset>
+
+                                                                </td>
+                                                                <td class="valigntop">
+                                                                    <fieldset class="rounded3">
+                                                                        <legend>Morning Heart Rate & ToM</legend>
+                                                                            
+                                                                                              <?php echo $this->form->mhr; ?> bpm. (optional)
+                                                                                              <div class="line"></div>
+                                                                                              <div<?php if($this->sex == "M"){echo ' class="hide"';} ?>>
+                                                                                              Time of Month <br/>
+                                                                                              <?php echo $this->form->tom; ?>
+                                                                                              </div>
+
+                                                                    </fieldset>
+                                                                               <fieldset class="rounded3">
+                                                                                              <legend class="legendboldred">Fatigue and Recovery</legend>
+                                                                                              <table class="table100">
+                                                                                                             <tr>
+                                                                                                                            <td colspan="2">Estimated fluid consumption (litre)</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->fluid; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div></div>
+                                                                                                                                <div id="sliderfluid" class="sliderfluid"></div></td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td colspan="2">Sleep quality</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->sleep_quality; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                             <div><img src="/img/scalesmiley.gif" alt="" /></div>
+                                                                                                                                <div id="slidersleep_quality" class="slider"></div></td>
+                                                                                                             </tr>
+
+                                                                                                             <tr>
+                                                                                                                            <td colspan="2">Sleep quantity (hrs)</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->sleep_quantity; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div><img src="/img/scalesmiley.gif" alt="" /></div>
+                                                                                                                                <div id="slidersleep_quantity" class="slider16"></div></td>
+                                                                                                             </tr>
+
+                                                                                                              <tr>
+                                                                                                                            <td colspan="2">Mental Recovery</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->mental_recovery; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div><img src="/img/scalesmiley.gif" alt="" /></div>
+                                                                                                                                <div id="slidermental_recovery" class="slider"></div></td>
+                                                                                                             </tr>
+
+                                                                                                              <tr>
+                                                                                                                            <td colspan="2">Physical Recovery</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->physical_recovery; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div><img src="/img/scalesmiley.gif" alt="" /></div>
+                                                                                                                                <div id="sliderphysical_recovery" class="slider"></div></td>
+                                                                                                             </tr>
+
+                                                                                                              <tr>
+                                                                                                                            <td colspan="2">Pre training energy</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->pre_training_energy; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                               <div><img src="/img/scalesmiley.gif" alt="" /></div>
+                                                                                                                               <div id="sliderpre_training_energy" class="slider"></div></td>
+                                                                                                             </tr>
+
+                                                                                                              <tr>
+                                                                                                                            <td colspan="2">Muscle Soreness</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->muscle_soreness; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div><img src="/img/scalesmiley-r.gif" alt="" /></div>
+                                                                                                                                <div id="slidermuscle_soreness" class="slider"></div></td>
+                                                                                                             </tr>
+
+                                                                                                              <tr>
+                                                                                                                            <td colspan="2">General Fatigue</td>
+                                                                                                             </tr>
+                                                                                                             <tr>
+                                                                                                                            <td class="width100 textcenter"><?php echo $this->form->general_fatigue; ?>*</td>
+                                                                                                                            <td>
+                                                                                                                                <div><img src="/img/scalesmiley-r.gif" alt="" /></div>
+                                                                                                                                <div id="slidergeneral_fatigue" class="slider"></div></td>
+                                                                                                             </tr>
+                                                                                              </table>
+                                                                                                             
+                                                                                              
+                                                                               </fieldset>
+                                                                               <br/>
+                                                                               <button id="submitdailyreport">Submit Daily Report &raquo;</button>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+                              </form>
+                   </div>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>

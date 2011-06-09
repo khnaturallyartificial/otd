@@ -1,0 +1,54 @@
+/* 
+    Document   : graph
+    Created on : 02-Aug-2010, 05:48:15
+    Author     : Administrator
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.graph input[type="text"]{
+               background-image: none;
+               background-color: #e7e7e7;
+               border:1px solid #b2b2b2;
+
+}
+.graph label{
+               font-size:11px;
+}
+.graph #graph0_enddate, .graph #graph0_startdate, .graph #graph0_limit,
+.graph #graph1_enddate, .graph #graph1_startdate, .graph #graph1_limit,
+.graph #graph2_enddate, .graph #graph2_startdate, .graph #graph2_limit,
+.graph #graph3_enddate, .graph #graph3_startdate, .graph #graph3_limit,
+.graph #graph30_enddate, .graph #graph30_startdate, .graph #graph30_limit,
+.graph #graph5_enddate, .graph #graph5_startdate, .graph #graph5_limit,
+.graph #graph6_enddate, .graph #graph6_startdate, .graph #graph6_limit,
+.graph #graph7_enddate, .graph #graph7_startdate, .graph #graph7_limit,
+.graph #graph8_enddate, .graph #graph8_startdate, .graph #graph8_limit,
+.graph #graph9_enddate, .graph #graph9_startdate, .graph #graph9_limit,.graph #graph90_limit,
+.graph #graph20_enddate, .graph #graph20_startdate, .graph #graph20_limit{
+               width:100px;
+               height:13px;
+               padding:3px;
+               font-size:12px;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style:italic;
+               color: #3b3737;
+}
+.graph #graph0_limit, .graph #graph1_limit, .graph #graph2_limit{
+               width:30px;
+}
+.graph fieldset{
+               padding:2px;
+               text-align: center;
+}
+.graph #setgraph0_params, .graph #setgraph1_params{
+               margin-top:8px;
+}
+.graphdiv h3{
+               color:#373232;
+}

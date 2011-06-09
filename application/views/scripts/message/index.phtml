@@ -1,0 +1,38 @@
+<div class="topmaincont textcenter">
+    <img src="/img/head.gif" alt="" /><br/><br/>
+    
+    <table style="margin:0px auto 0px auto;">
+	<tr>
+	    <td style="vertical-align:bottom; text-align:right;"><img src="/img/<?php echo $this->bot; ?>bot.png" alt="" /></td>
+	    <td class="systemmsg" style="width:420px;padding-left:20px;">
+	    <?php echo $this->message; ?>
+	    <br/><br/>
+	    <a class="border" href="<?php
+                        if($this->redir){
+                                       echo $this->redir;
+                        }
+                        else{
+                        echo $this->url(array('controller'=>'index'));
+                        }
+                        ?>"><?php
+                        if($this->redir){
+                                       echo $this->redirtext;
+                        }
+                        else{
+                        echo "Go back to index Page";
+                        }
+                        ?></a>
+	    <br/>
+	    <a class="toindex" href="javascript: history.go(-1)">&laquo; Go back to previous page</a>
+	    </td>
+	</tr>
+    </table>
+    <br/><br/>
+    <div class="clear"></div>
+</div>
+
+<div id="pagediv"></div>
+<div class="indexbottomcontent textcenter">
+	<br/><br/><br/>
+</div>
+<div class="clear"></div>

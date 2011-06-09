@@ -1,0 +1,35 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Alerts</h1>
+                   <h5>This page lists the last 5 alerts from all athletes currently attached to you. Click on Show recent alerts button to view.</h5>
+                   <div class="line"></div>
+                   <?php
+                   foreach($this->alertdata as $al){
+                                 echo '<div class="alertathname rounded3">'.$al["name"].' <a class="revalert rounded3">Show recent alerts</a></div>';
+                                 echo '<div class="alertdiv">';
+                                 foreach($al["data"] as $aldata){
+                                                echo '<div class="alertbox rounded3">
+                                                               <span class="newshead">'.$aldata["alerthead"].'</span> <span class="newsdate">['.$aldata["date"].']</span>
+                                                           <br/>'.$aldata["alertcontent"].'
+                                                            </div>';
+                                 }
+                                 echo '</div>';
+                   }
+
+                   ?>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+
+<div id="pagediv"></div>
+
+

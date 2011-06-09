@@ -1,0 +1,116 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+ </td> <td class="valigntop"><?php //echo $this->form; ?>
+    <div id="usercpcontent">
+                   <h1>Injuries and Illness history</h1>
+                   <div class="line"></div>
+                   <h3>Illness history</h3>
+                   <table id="illnesshistorylist" class="textcenter">
+                                  <tr>
+                                                 <td class="tdheader">Date</td>
+                                                 <td class="tdheader">Illness type</td>
+                                                 <td class="tdheader">Severity</td>
+                                                 <td class="tdheader">Type</td>
+                                                 <td class="tdheader">Activity Level</td>
+		         <td class="tdheader">Comment</td>
+                                  </tr>
+                                  
+                   <?
+                   $currentday = "";
+
+
+                   $typear = array(NULL,"New","Recurrent","Ongoing","Chronic");
+	$actar = array(NULL,"Normal","Reduced","Modified","Unable to train");
+                   $count = 0;
+                   foreach ($this->illnesslist as $il) : ?>
+                                  <tr<?php if($count%2 != 0){ echo ' class="darkline"'; } ?>>
+                                                 <td>
+                                                                <?php if($il["date"] != $currentday){echo $il["date"];} ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $this->illnesstype[$il["illnesstypeid"]]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $il["severity"]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $typear[$il["type"]]; ?>
+                                                               
+                                                 </td>
+                                                 <td>
+                                                                <?php 
+                                                                
+                                                                echo $actar[$il["activity_level"]];
+
+                                                                ?>
+                                                 </td>
+		         <td>
+		                   <?php echo str_replace("\\'","'",$il["comment"]);    ; ?>
+		         </td>
+                                  </tr>
+                                  <?php $currentday = $il["date"]; $count++; ?>
+                   <? endforeach; ?>
+                   </table>
+
+
+                   <h3>Injuries history</h3>
+                   <table id="illnesshistorylist" class="textcenter">
+                                  <tr>
+                                                 <td class="tdheader">Date</td>
+                                                 <td class="tdheader">I/N</td>
+                                                 <td class="tdheader">Muscle</td>
+                                                 <td class="tdheader">Pain Rating</td>
+                                                 <td class="tdheader">Tissue</td>
+                                                 <td class="tdheader">Type</td>
+                                                 <td class="tdheader">Training Mod</td>
+                                                 <td class="tdheader">Other Info</td>
+                                  </tr>
+
+                   <?
+                   $currentday = "";
+                   $tissuelist = array(null,"Muscle", "Tendon", "Ligament","Bone");
+                   $typelist = array(null,"New","Recurrent", "Ongoing","Chronic");
+                   $modifiedlist = array("a" => "No", "b" => "Slight Mod.","c"=>"Pres. Ex Not completed", "d"=>"Unable to train");
+                   $count = 0;
+                   foreach ($this->injurylist as $il) : ?>
+                                  <tr<?php if($count%2 != 0){ echo ' class="darkline"'; } ?>>
+                                                 <td>
+                                                                <?php if($il["date"] != $currentday){echo $il["date"];} ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $il["inj_or_nig"]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $il["muscle_group"]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $il["pain_rating"]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $tissuelist[$il["tissue"]]; ?>
+                                                 </td>
+                                                  <td>
+                                                                <?php echo $typelist[$il["type"]]; ?>
+                                                 </td>
+                                                  <td>
+                                                                <?php echo $modifiedlist[$il["training_modified"]]; ?>
+                                                 </td>
+                                                 <td>
+                                                                <?php echo $il["other_info"]; ?>
+                                                 </td>
+                                  </tr>
+                                  <?php $currentday = $il["date"]; $count++; ?>
+                   <? endforeach; ?>
+                   </table>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+

@@ -1,0 +1,54 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+    </td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Import plans</h1>
+                   <div class="line"></div>
+                   <table style="width:95%">
+                                  <tr>
+                                                 <td style="width:70%;">
+                                                                <form method="POST" action"/coach/import">
+                                                                      Plan name:<br/><input type="text" name="planname" id="planname"
+                                                                       style="height:16px;width:300px;font-size:11px;font-family: 'Trebuchet MS', sans-serif;
+                                                                       padding:2px; border:1px solid #828282; background-color:white;"
+                                                                       title="<strong>Give your plan a name!</strong>"/><br/>
+                                                                           Plan data:<br/><textarea name="rawdata" id="rawdata" class="rawdata" title="Just simply copy and paste everything from your word document
+                                                                                   into the text box below."></textarea>
+                                                                            <input type="submit" name="submit" value="Import plan"/>
+                                                                </form>
+                                                                <h3>Note</h3>
+                                                                <h4>
+                                                                               Please make sure that:<br/>
+                                                                               <ul>
+                                                                                              <li>The very first line MUST have the plan's start date, in this format: YYYY.MM.DD</li>
+                                                                                              <li>The heading for each day must have the word `Monday`, `Tuesday`, `Wednesday` etc.</li>
+                                                                                              <li>Each exercise rows must only contain numbers and slashes</li
+                                                                                              <li>Everyday of the plan duration must be presented, even if there is no exercise planned</li>
+                                                                               </ul>
+
+                                                                               <a class="togglenext">Please click here for example</a>
+                                                                               <div class="hide">
+                                                                                              Step 1.:<br/><img src="/img/instruction1.jpg" alt="" /><br/>
+                                                                                              Step 2.:<br/><img src="/img/instruction2.jpg" alt="" /><br/>
+                                                                                              Step 3.:<br/><img src="/img/instruction3.jpg" alt="" /><br/>
+                                                                               </div>
+                                                                </h4>
+                                                 </td>
+                                                 <td>
+
+                                                 </td>
+                                  </tr>
+                   </table>
+                  
+        <div class="clear"></div>
+    </div>
+                              </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

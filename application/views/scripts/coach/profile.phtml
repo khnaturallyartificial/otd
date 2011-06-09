@@ -1,0 +1,43 @@
+<div class="topmaincont pad10">
+                <style type="text/css">
+                                  .smallinputbox input[type="password"]{
+                              width:150px;
+                              height:12px;
+                              font-size: 10px;  }
+                   </style>
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+
+    <div id="usercpcontent">
+                   <h1>My Info.</h1>
+                   <div class="line"></div>
+                   <div class="smallinputbox">
+                                  <form action="" method="POST">
+                   <?php echo $this->form->name;
+                   echo $this->form->surname;
+                   echo $this->form->contactno;
+                   echo $this->form->email;?><br/><br/>
+                                  <h5>Your current password is required to be entered in the two boxes below in order to update your details.
+                                  If you wish to change your password, just enter your new password in the two boxes below.</h5><br/>
+                                  <?php
+                   echo $this->form->password;
+                   echo $this->form->cpassword;
+                   echo $this->form->submit;
+
+                   ?>
+                   </form>
+                                  </div>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+
+<div id="pagediv"></div>
+
+

@@ -1,0 +1,158 @@
+
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+              <script type="text/javascript">
+	  
+	    <?php if($this->forpowerlift == true){ ?>
+	    $(document).ready(function(){
+	              
+	            $("#sets,label[for=\"sets\"]").removeAttr("style");
+	            $("#sets").removeAttr("disabled");
+	    });
+
+	    <?php } ?>
+</script>
+	
+    <?php echo $this->menu; ?>                   
+    </div>
+ </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <div class="floatright width30percent">
+               <div class="red rounded textcenter draggable">
+	    <img src="/img/plans.png" alt="" /> Plans you created<br/><div class="linedotted"></div>
+                        <div class="createdplans">
+                                       <?php $plans = new Application_Model_DbTable_Plan(); echo $plans->getActivePlans("id"); ?>
+                        </div>
+
+                        <div class="aestatus lightredfont"></div>
+               </div>
+                <div class="red rounded textcenter draggable">
+	    <a class="togglenext"><img src="/img/plans.png" alt="" /> Archived Plans<br/></a>
+                        <div class="hide">
+                        <div class="linedotted"></div>
+                        <div class="createdplans" id="archivedlist" >
+                                       <?php $plans = new Application_Model_DbTable_Plan(); echo $plans->getArchivedPlans("id"); ?>
+                        </div>
+                        </div>
+
+                        <div class="aestatus lightredfont"></div>
+               </div>
+                                   <?php if($this->addexerciseform){ ?>
+                              <div id="addexercisetoplan" class="red rounded textcenter draggable">
+	     <img src="/img/exerciseplan.png" alt="" /> Add exercise to this plan<br/><div class="linedotted"></div>
+                         <div id="addresult" class="alertmessage"></div>
+                        <div class="smallinputbox textleft">
+                                       <?php echo $this->addexerciseform->planid; ?>
+                                       <?php echo $this->addexerciseform->date; ?><div class="linedotted"></div>
+                                       <?php echo $this->addexerciseform->exerciseid; ?><div class="linedotted">
+					   
+                                                      <span class="combinedexercisebtn">Combined exercise? Click here</span>
+                                       </div>
+                                       <div id="exerciseid_com_div">
+		<?php echo $this->addexerciseform->exerciseid_com; ?>
+		         <br/><span id="togglethirdexercise">Third exercise?</span>
+		         <div id="thirdexerciseid">
+		                   <?php echo $this->addexerciseform->exerciseid_com2; ?>
+		         </div>
+		         <div class="linedotted"></div></div>
+				       <?php echo $this->addexerciseform->am_or_pm; ?>
+
+	                   <div class="linedotted"></div>
+                                       <?php echo $this->addexerciseform->weight; ?> kg.<div class="linedotted"></div>
+                                       <?php echo $this->addexerciseform->reps; ?><div class="linedotted"></div>
+                                       <div id="reps_com_div"><?php echo $this->addexerciseform->reps_com; ?><div class="linedotted"></div>
+		         <div id="thirdexercisereps">
+		                   <?php echo $this->addexerciseform->reps_com2; ?>
+		         </div>
+	                   </div>
+
+                                       <?php echo $this->addexerciseform->sets; ?>
+                                       <br/><?php echo $this->addexerciseform->comment; ?><div class="linedotted"></div>
+                                       <button id="addexerciseplan" class="smallbutton">&laquo; Add to plan</button>
+                                       
+                        </div>
+                        <div class="aestatus lightredfont"></div>
+               </div>
+                   <?php } ?>
+                   </div>
+                   <h1>Exercise Plans</h1>
+                                  <div class="line"></div>
+                                  Select a plan you would like to edit from the list to the right.
+                                  <?php if($this->form){ ?>
+                                  <div id="exerciseplaninformation">
+                                                 <div class="padright35percent textleft smallinputbox">
+                                                                <fieldset class="rounded">
+                                                                               <legend>Plan info</legend>
+			                   
+                                                                               <span class="smalllightredfont">
+                                                                                              You can change information of this form by changing the
+                                                                                              values inside the 3 boxes below, and press "Save"
+                                                                               </span>
+			                   <div class="floatright" style="text-align:right;"><br/><br/><br/>
+			                   Total reps: <span id="totvol">-</span><br/>
+			                   Average Load: <span id="totav">-</span> kg.</div>
+                                                                               <table class="noborder">
+                                                                               <tr><td><?php echo $this->form->planname; ?>
+                                                                               <?php echo $this->form->startdate; ?>
+                                                                               <?php echo $this->form->enddate; ?>
+                                                                               <?php echo $this->form->planid; ?>
+
+                                                                                              </td>
+                                                                                              <td class="valignbottom textright">
+                                                                                                             <button class="smallbutton" id="changeplaninfo">Save</button>
+                                                                                              </td>
+                                                                               </tr>
+                                                                               <tr>
+                                                                                              <td colspan="2" id="savedmessage">
+                                                                                              </td>
+                                                                               </tr>
+                                                                               </table>
+
+                                                                               <div id="updateplanstatus"></div>
+                                                                </fieldset>
+
+                                                                <fieldset class="rounded">
+                                                                               <legend>Athletes attached to this plan</legend>
+                                                                               <div id="athletesinthisplan">
+                                                                                              <div id="athletelist">
+                                                                                                             <?php echo $this->athletelist; ?>
+                                                                                              </div>
+
+                                                                                              <div class="linedotted"></div>
+                                                                               <?php echo $this->athleteselection; ?>
+                                                                                              <button id="attachathletebtn">Attach</button>
+                                                                               </div>
+                                                                </fieldset>
+
+                                                                <fieldset class="rounded">
+                                                                               <legend>Exercises in this plan</legend>
+                                                                               <div class="floatright">
+                                                                                              <a class="none reload"><img src="/img/reload.png" alt="" /> Sort List</a>
+                                                                                              <a class="none refreshprintplan"><img src="/img/reload.png" alt="" /> Refresh</a>
+                                                                                               <a class="none" href="/print/printplan2/planid/<?php echo $this->planid;  ?>/printpage/1"><img src="/img/printer.png" alt="" /> Print This plan</a>
+                                                                               </div>
+                                                                               <div id="printplanframe"> <!-- print plan here -->
+
+                                                                               </div>
+                                                                               <span class="btn togglenext">View exercises in list format</span>
+                                                                               <div id="exercisesinthisplan">
+                                                                                              <?php echo $this->exerciseplans; ?>
+                                                                               </div>
+                                                                               
+                                                                </fieldset>
+
+                                                                
+                                                 </div>
+                                  </div>
+                                  <?php } ?>
+                   <div id="exerciselist">
+
+                                  <?php echo $this->exerciselist; ?>
+                   </div>
+        <div class="clear"></div>
+    </div>
+</td></tr></table>
+</div>
+
+<div id="pagediv"></div>

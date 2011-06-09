@@ -1,0 +1,24 @@
+<table style="text-align: center;">
+          <tr style="font-weight: bold;background-color:#c3ae97">
+	<td>Athlete Name</td>
+	<td>Max Squats</td>
+	<td>Max C&amp;J</td>
+	<td>Max Snatch</td>
+
+          </tr>
+          <?php
+          $count = 0;
+          foreach($this->table as $items){
+	echo'
+	          <tr'.(($count%2)==1? '':' style="background-color:#e7ddd2"').'>
+		<td>'.$items["name"].'</td>
+		<td>'.$items["squat"].'</td>
+		<td>'.$items["cj"].'</td>
+		<td>'.$items["snatch"].'</td>
+	          </tr>
+	          ';
+	$count++;
+          }
+
+          ?>
+</table>

@@ -1,0 +1,95 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+                   <h1>Athlete Summary</h1>
+                   <h4>Select the athlete you would like to view from the drop down list below and click `Display` button.</h4>
+                   <div class="line"></div>
+                   <fieldset>
+                                  <legend>Athlete List</legend>
+                                  <select id="athlete_summary_list">
+                              <?php
+                                             foreach($this->athletes as $athlete){
+                                                            echo '<option value="'.$athlete["athleteid"].'">'.$athlete["name"].' '.$athlete["surname"].'</option>';
+                                             }
+                              ?>
+               </select>
+                                  <button id="display_summary">Display</button>
+                   </fieldset>
+
+                   <fieldset>
+                                  <legend>Athlete Info.</legend>
+                                  <table id="athsumtable">
+                                                 <tr>
+                                                                <td id="column1" class="textcenter" rowspan="2">
+                                                                               <img src="" alt="" id="profileimage"/>
+                                                                               
+                                                                </td>
+                                                                <td id="column2">
+                                                                               Name: <span id="athname"></span><br/>
+                                                                               Age: <span id="athage"></span><br/>
+                                                                               Current Weight: <span id="athweight"></span> kg.<br/>
+                                                                               Current Max Snatch: <span id="athmaxsnatch"></span> kg.
+                                                                </td>
+                                                                <td id="column3">
+                                                                               Today's date: <span id="todaydate"></span><br/>
+                                                                               Height: <span id="athheight"></span><br/>
+                                                                               Latest body fat: <span id="athbodyfat"></span> mm.<br/>
+                                                                               Current Max C&amp;J: <span id="athcj"></span> kg.<br/>
+                                                                </td>
+                                                                
+                                                 </tr>
+                                                 <tr>
+                                                               
+                                                                <td colspan="2">
+                                                                               
+                                                                </td>
+                                                 </tr>
+                                                 <tr>
+                                                                <td>
+                                                                               <span id="changeprofileimage">Change Profile Image?</span><br/>
+                                                                               <?php echo $this->form; ?>
+                                                                               <a id="revealeditbscj">Edit Body fat, max snatch and max C&J</a>
+                                                                               <div id="editbscj">
+                                                                                          Body fat: <input type="text" id="editbf" class="tiny"/><br/>
+                                                                                          Max snatch: <input type="text" id="editms"  class="tiny"/><br/>
+                                                                                          Max C&amp;J: <input type="text" id="editcj" class="tiny" /><br/>
+                                                                                          <span id="savebscj" style="color:#FFFFFF !important;">Save info</span>
+                                                                               </div>
+                                                                </td>
+                                                                <td colspan="2">
+                                                                               % Monthly completion rate (Load): <span id="athmcrL"></span>%<br/>
+                                                                               % Monthly completion rate (reps): <span id="athmcrR"></span>%<br/>
+                                                                </td>
+                                                 </tr>
+                                                 <tr>
+                                                                 <td>
+
+                                                                </td>
+                                                                <td>
+                                                                               No. of injuries to date: <span id="athinjuries"></span>
+                                                                </td>
+                                                                <td>
+                                                                               Current injury status: <span id="athinjurystatus"></span>
+                                                                </td>
+                                                               
+                                                 </tr>
+                                                 <tr>
+                                                                <td colspan="3">Comments: (30 most recent)<br/>
+                                                                               <div id="athcomments"></div>
+                                                                </td>
+                                                 </tr>
+                                  </table>
+                   </fieldset>
+    </div>
+
+
+
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+

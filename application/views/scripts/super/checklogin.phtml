@@ -1,0 +1,32 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+</td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+              <h1>Users Last Login Date</h1>
+              <table>
+	    <tr>
+	              <td>Name</td>
+	              <td>Last login date</td>
+	    </tr>
+              
+            <?php
+	foreach($this->list as $user){
+	          echo '<tr><td><img src="/img/user-'.$user["role"].'.png"/> '.ucfirst($user["name"]).' '.ucfirst($user["surname"]).'</td>';
+	          echo '<td>'.date("j F Y",strtotime($user["MAX(loginlog.time)"])).'</td></tr>';
+	}
+
+	
+            ?>
+</table>
+
+    </div>
+ </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

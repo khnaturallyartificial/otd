@@ -1,0 +1,58 @@
+#column1{
+               width:200px;
+}
+#column2{
+               width:250px;
+}
+#column3{
+               width:250px;
+}
+#profileimage{
+               border:2px solid #483c2d;
+}
+#athsumtable td{
+               vertical-align: top;
+}
+#athsumtable span{
+               font-size:11px;
+               color:#cd413c;
+               font-weight:bold;
+}
+input[type="submit"]{
+               font-size:12px;
+               padding:3px;
+              font-weight: normal;
+}
+input[type="file"]{
+               font-size: 11px;
+               
+}
+form{
+               margin:0px;
+}
+#athcomments{
+               font-weight: normal !important;
+               color: #557c8b !important;
+               font-size:12px !important;
+               padding-left: 20px;
+}
+
+.statusred{
+               background-color:#ca4545;
+               color:#1d1d1d !important;
+               padding:3px;
+}
+.statusamber{
+               background-color:#e0951e;
+               color:#1d1d1d !important;
+               padding:3px;
+}
+.statusgreen{
+               background-color:#9dca45;
+               color:#1d1d1d !important;
+               padding:3px;
+}
+#revealeditbscj{
+               color:#902731;
+               font-size:12px;
+}

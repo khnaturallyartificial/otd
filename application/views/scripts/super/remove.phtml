@@ -1,0 +1,41 @@
+<div class="topmaincont pad10">
+<table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+</td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+        <h1>Remove users</h1>
+        <div class="line"></div>
+        <h4>You can remove the user from the system. Please note that the user will be permanently deleted from the system. Deleting
+        a coach will resulting in all athletes attached to that coach to become coach-less</h4>
+        <br/>
+        <span><img src="/img/coaches.png" alt=""/> = Coaches, <img src="/img/athletes.png" alt="" /> = Athletes</span>
+        <br/>
+        <ul>
+                       <?php
+                              foreach($this->userlist as $user){
+                                             echo '<li id="'.$user["userid"].'"><img src="';
+                                             if($user["role"]=="C"){
+                                                            echo "/img/coaches.png";
+                                             }
+                                             else{
+                                                            echo "/img/athletes.png";
+                                             }
+                                             echo '" alt=""/><span class="username">'.$user["name"].' '.$user["surname"];
+                                             echo '</span><img src="/img/cross-script.png" alt="" class="removeuserfromsystem"/></li>';
+                              }
+                       ?>
+        </ul>
+<div class="clear"></div>
+    </div>
+ </td></tr></table>
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>
+
+<div id="dialog-confirm" title="Empty the recycle bin?">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><strong><i><span id="namespace"></span></i></strong> will be deleted from the system. Are you sure?</p>
+</div>

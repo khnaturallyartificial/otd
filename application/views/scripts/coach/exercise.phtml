@@ -1,0 +1,36 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu" class="floatleft">
+    <?php echo $this->menu; ?>
+    </div>
+     </td> <td class="valigntop">
+    <div id="usercpcontent">
+               <div class="floatright red rounded textcenter width200 draggable">
+	    Add new exercise<br/><div class="linedotted"></div>
+                        Exercise Number: <input id="exerciseidinput" type="text"/><br/>
+	    Exercise Name: <input id="exercisenameinput" type="text" /><br/>
+                        Exercise Type: <br/><input type="radio" name="exercisetypeinput" type="text" value="ol" checked /> Weightlifting
+                        <input type="radio" name="exercisetypeinput" type="text" value="po" /> Powerlifting
+	    <br/>
+	    <button id="addexercise" class="rounded" >Add &raquo;</button>
+                        <div class="aestatus lightredfont"></div>
+               </div>
+                   <h1>Available exercise types</h1>
+                                  <div class="line"></div>
+                                  If an exercise that you need is not on the list below, please add it using the form
+                                  on the right --><br/>
+                                  <span class="ol">blue</span> = Weightlifting <span class="po">Red</span> = Powerlifting
+                   <div id="exerciselist">
+                                  
+                                  <?php echo $this->exerciselist; ?>
+                   </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    
+    <div class="clear"></div>
+    </td></tr></table>
+</div>
+<div id="pagediv"></div>
+

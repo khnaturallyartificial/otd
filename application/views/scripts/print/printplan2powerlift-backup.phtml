@@ -1,0 +1,216 @@
+<?php
+if($this->printpage){
+               ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+                                  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+                                  <head>
+                                  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+                                  <title>Print Plan</title>
+                                  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+                                  <script type="text/javascript">
+                   $(document).ready(function(){
+                                  $(".hide").remove();
+                   });
+                   </script>
+
+<?php
+}
+?>
+<style type="text/stylesheet">
+          <?php
+	if($this->hascss){
+	          echo '
+		.griddone{
+		padding:1px;
+		background-color:#D6DE49;
+		}
+		.gridskipped{
+		padding:1px;
+		background-color:#F09090;
+		  }
+	          ';
+	}
+          ?>
+#printplantablestyle{
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                                           font-size:13px;
+                                                            }
+
+                                                            #printplantablestyle .date{
+                                                                           font-weight: bold;
+                                                            }
+
+
+                                                            #printplantablestyle .exid{
+                                                                           font-weight: bold;
+                                                                           font-size: 14px;
+                                                                           color:#000000;
+                                                                            border-right:4px solid;
+                                                            }
+
+                                                            #printplantablestyle table{
+                                                                           border:2px solid #6b6b6b;
+                                                                           width:100%;
+                                                                           table-layout: fixed;
+                                                                           border-collapse: collapse;
+                                                                           margin-bottom:5px;
+                                                                           <?php
+                                                                           if($this->printpage){
+                                                                                          echo 'font-size:7px;';
+                                                                           }
+                                                                           else{
+                                                                                          echo 'font-size:15px;';
+                                                                           }
+                                                                           ?>
+
+                                                            }
+
+                                                            #printplantablestyle td{
+                                                                           background-color: #f5f5f5;
+                                                                           margin:0px;
+                                                                           color:#454545;
+                                                                           text-align: center;
+                                                                           border-right: 1px solid #858585;
+                                                                           border-bottom: 1px solid #858585;
+                                                                           line-height:10px;
+
+                                                                           font-family: 'Arial Narrow',sans-serif;
+                                                                          <?php
+                                                                           if($this->printpage){
+                                                                                          echo 'padding:0px;';
+                                                                           }
+                                                                           else{
+                                                                                          echo 'padding:3px;';
+                                                                           }
+                                                                           ?>
+                                                            }
+                                                            .bigbtm{
+                                                                           border-bottom: solid 2px;
+                                                            }
+                                                            .doublebtm{
+                                                                           border-top: double;
+}
+<?php
+if($this->printpage){
+?>
+
+                                                            h2{
+                                                                           border-bottom: 1px dotted #545454;
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                            }
+                                                            .red{
+                                                                           color:#e44115;
+                                                                           font-size:13px;
+                                                                           font-family: 'Trebuchet MS', sans-serif;
+                                                                           font-style:italic;
+                                                            }
+                                                            <?php } ?>
+                                                            #printplantablestyle table .commentbox, #printplantablestyle .commentbox tr, #printplantablestyle .commentbox td{
+                                                                           border:none;
+                                                                           background:none;
+                                                                           text-align:left;
+                                                                           padding: 2px;
+                                                            }
+                                                            #printplantablestyle .commentbox{
+                                                                           margin:5px;
+                                                                           border:1px solid #c8c8c8 !important;
+                                                                           padding:5px;
+                                                                           height:40px;
+                                                                           color:#585858;
+                                                                           margin-bottom: 10px;
+                                                                           line-height: 10px;
+                                                                           vertical-align:top;
+                                                              }
+
+</style>
+
+
+	              </head><body>
+
+<br/>
+	              <div id="printplantablestyle">
+<?php
+
+          $exercisenl = new Application_Model_DbTable_Exercise();
+          $enl = $exercisenl->getAllExercise();
+          //for each day
+          foreach($this->alldata as $key => $day){
+	//draw a 6 colums long table
+	echo '<table style="width:100%;border:2px solid #000000;border-collapse:collapse;font-family:Trebuchet MS;text-align:center;">';
+	echo '    <tr style="font-family:Trebuchet MS;font-size:14px;font-weight:bold;">
+		          <td colspan="6" class="date" style="border-bottom:2px solid #000000;text-align:left;padding:3px;">
+			Date: '.$key.'
+		          </td>
+		</tr>';
+	echo '
+	          <tr style="font-family:Trebuchet MS;font-size:14px;font-weight:bold;">
+	          <td style="border-right:2px solid #000000; border-bottom:2px solid #000000; ">No.</td>
+	          <td  style="border-right:2px solid #000000;border-bottom:2px solid #000000; ">Exercise Name</td>
+	          <td style="border-right:2px solid #000000;border-bottom:2px solid #000000; ">Kgs</td>
+	          <td style="border-right:2px solid #000000;border-bottom:2px solid #000000; ">Sets</td>
+	          <td style="border-right:2px solid #000000;border-bottom:2px solid #000000; ">Reps</td>
+	          <td style="border-bottom:2px solid #000000; ">Coach Comments</td>
+	          </tr>
+	          ';
+	          $count = 1;
+	foreach($day as $exercise ){
+
+	          foreach($exercise as $exerciseitem){
+		echo '<tr style="font-size:12px;" class="stylefor'.$exerciseitem["exerciseplanid"].' grid'.
+		 $this->donelist[(int)$exerciseitem["exerciseplanid"]].
+		        '"><td style="border:1px solid #000000;" class="epid'.$exerciseitem["exerciseplanid"].'">'.$count.'<img src="/img/cross.png" alt="-" class="deleteexplan2"/>
+		          ';
+
+		          if($this->hascustom != 1 && $this->hasprintpage != 1 && $this->userrole == "A"){
+		          echo '<img src="/img/tick.png" class="markdone2" alt="" title="Mark as completed as prescribed" />
+		          <img src="/img/skip.png" class="markskipped2" title="Mark as modified (done more/less than prescribed?)" alt=""/>';
+		          }
+
+		          echo'</td>
+		          <td style="border:1px solid #000000;">'.$enl[$exerciseitem["exerciseid"]];
+			if($this->donelist[$exerciseitem["exerciseplanid"]]=="skipped"){
+                                                            echo "Mod.".$this->detaillist[$exerciseitem["exerciseplanid"]]["actual_weight"]."/".
+                                                                    $this->detaillist[$exerciseitem["exerciseplanid"]]["actual_total_reps"];
+                                                            if((int)$this->detaillist[$exerciseitem["exerciseplanid"]]["actual_reps_com"] > 0){
+                                                                    echo "/".$this->detaillist[$exerciseitem["exerciseplanid"]]["actual_reps_com"];
+                                                            }
+                                             }
+		          echo '</td>
+			<td style="border:1px solid #000000;" class="weightfor'.$exerciseitem["exerciseplanid"].'">'.$exerciseitem["weight"].'</td>
+		          <td style="border:1px solid #000000;" class="setsfor'.$exerciseitem["exerciseplanid"].'">'.$exerciseitem["sets"].'</td>
+			<td style="border:1px solid #000000;" class="repsfor'.$exerciseitem["exerciseplanid"].'">'.$exerciseitem["reps"].'</td>
+			          <td style="border:1px solid #000000;">'.$exerciseitem["comment"].'</td></tr>';
+
+
+		$count++;
+	          }
+	}
+
+
+
+
+	echo '</table><br/><br/>';
+          }
+
+
+
+
+?>
+
+	              </div>
+
+<?php //Zend_Debug::dump($this->alldata); ?>
+
+
+
+
+	              <?php
+if($this->printpage){
+?>
+                                                 </body>
+                                  </html>
+<?php
+}
+?>

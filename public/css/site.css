@@ -1,0 +1,955 @@
+/* Main parts */
+body{
+    background-color:#121212;
+    font-family: "Trebuchet MS", sans-serif;
+    color:#925656;
+    margin:0px;
+}
+#top{
+    font-size:10px;
+    height:19px;
+    background-color:#0f0e0e;
+    padding:4px 5px 0px 5px;
+    white-space:nowrap;
+}
+#bottom{
+    text-align:center;
+    font-size:10px;
+    vertical-align:bottom;
+    color:#e1c5c5;
+}
+
+/* Index - Main */
+
+#indexcontent{
+    background-color:#26201a;
+}
+.griddone{
+               background-color: #9dca45;
+               color:#2877B8;
+               padding-right:3px;
+               padding-left:3px;
+}
+.gridskipped{
+               background-color:#a54552;
+               color:#e1c5c5;
+               padding-right:3px;
+               padding-left:3px;
+}
+#indexmain{
+    background-image:url('../img/main.jpg');
+    background-repeat:no-repeat;
+    background-color:#26201a;
+    background-position:center;
+    width:800px;
+    height:404px;
+    margin:0px auto 0px auto;
+}
+.missingdailyreport{
+          color:#f1e7b0;
+          padding:0px 3px 0px 3px;
+          background-color:#3b2f23;
+          font-size: 10px;
+          line-height: 1.2em;
+}
+.missingdailyreport:hover{
+          color:#f1e7b0;
+          padding:0px 3px 0px 3px;
+          background-color:#611f18;
+          font-size: 10px;
+          line-height: 1.2em;
+}
+#pagediv{
+    height:17px;
+    background-image:url('../img/mainbotdiv.jpg');
+}
+.haveaccbtn{
+    margin-top:230px;
+    margin-left:50px;
+}
+.signupbtn{
+    margin-left:70px;
+}
+.indexbottomcontent table{
+    font-size:9px;
+    color:#e1c5c5;
+}
+.indexbottomcontent table td {
+    border-right:1px dotted #614b42;
+}
+.newshead{
+    color:#954f31;
+    font-weight:bold;
+    font-size:10px;
+}
+.newsdate{
+    font-size:8px;
+}
+/*forgotten pass page*/
+#forgotbutton{
+               width:200px;
+               
+}
+
+/* Login & Register page */
+#loginform, #registerformwrap{
+    width:100%;
+    border-top:1px solid #aebabf;
+    border-bottom:1px solid #aebabf;
+    padding-top:4px;
+    background:url('../img/innershadow.jpg') repeat-x #f7fafb;
+}
+form#registerform{
+    width:900px;
+    margin:0px auto 0px auto;
+    text-align:right;
+}
+#registerform .hint{
+               color:#6a1814;
+}
+#loginform input[type="text"], #loginform input[type="password"], #registerform input[type="text"], #registerform input[type="password"]{
+    width:200px;
+    height:25px;
+    padding:6px;
+    font-size:19px;
+    background: #cfd6d8;
+    border: 2px solid #6b7477;
+    color:#2b393d;
+    font-weight:bold;
+    font-family: "Trebuchet MS", sans-serif;
+    font-style:italic;
+}
+#loginform label, #registerform label{
+    font-size:18px;
+    font-family: "Trebuchet MS", sans-serif;
+    font-style:italic;
+    color:#2d3b41;
+    padding: 3px;
+    background-color:#FFFFFF;
+    -moz-border-radius:3px;
+}
+label[for="logintype-A"], label[for="logintype-C"]{
+    font-size:19px !important;
+    font-weight:bold;
+}
+.formbottomborder{
+    border-bottom:1px dashed #797979;
+}
+.registrationtable{
+    border:none;
+}
+.registrationtable td{
+    width:50%;
+}
+label[for="coachcode"]{
+    font-size:13px;
+}
+#coachcode{
+    width:120px;
+}
+
+/*Message Page*/
+.systemmsg{
+    width:459px;
+    height:177px;
+    background-image:url('../img/systemmsg.png');
+    background-position:left;
+    vertical-align:middle;
+}
+a.toindex{
+    font-size:11px;
+    color:#5f4b4b;
+}
+
+
+/*User - Dashboard */
+#menu{
+    width:130px;
+    border:1px solid #43727f;
+    /*background: url('../img/menuinnershadow.jpg') repeat-x #141311;*/
+    background-color:#548A99;
+    padding:5px 5px 5px 15px;
+    font-style:normal;
+    font-size: 11px;
+    font-weight:bold;
+    color:#ebe4d5;
+    position:relative;
+}
+.menutitle, .menutitle a, #menu a,.accordiontitle, .accordiontitle a{
+    color:#ebe4d5;
+}
+.menuitems,.accordionitems{
+    padding:5px;
+    margin-left:10px;
+    color:#817b6e;
+    font-size: 9px;
+    
+}
+
+input.tiny{
+               width:40px;
+               height:15px !important;
+               font-size:13px !important;
+               color:#000000;
+               padding:1px !important;
+}
+
+#usercpcontent{
+    vertical-align: top;
+    border:1px solid #2e2823;
+    /*background: url('../img/innershadowlogo.jpg') repeat-x #141311;*/
+    background-color: #f6fafa; 
+    padding:5px 5px 5px 15px;
+    font-style:normal;
+    font-size: 11px;
+    font-weight:bold;
+    /*color:#a29797;*/
+    color: #3E4142;
+}
+#dashboardcontent h1{
+    margin:0em auto 0em auto;
+    
+}
+.width200percent{
+               width:200%;
+}
+
+/* User - Coach - Exercise */
+.ol{
+               color:#2877B8;
+}
+.po{
+               color:#B8284C;
+}
+#exercisenameinput,#exerciseidinput{
+    background-color: #d6e5eb;
+    /*background-image: url('../img/innershadowtextfield.jpg');*/
+    background-repeat: repeat-x;    
+    border:1px solid #839fab;
+    width:90%;
+    color:#385561;
+    font-weight: bold;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 12px;
+    width:120px;
+    height:14px;
+}
+#addexercise{
+    border: 1px solid #723333;
+    background-color:#a13131;
+    font-size: 10px;
+    margin-top: 5px;
+    color: #deb6b6;
+}
+.graphdiv{
+               background-color: #FFFFFF;
+               border:1px solid #d6d6d6;
+               padding:15px;
+               margin-bottom: 10px;
+}
+
+.customformstyle input[type="text"]{
+               width:140px;
+               height:13px;
+               font-size:11px;
+               padding:2px;
+               background-color:#FFFFFF;
+               border:1px solid #999999;
+}
+.customformstyle select{
+               width:140px;
+}
+.customformstyle label{
+               font-size:13px;
+}
+.customformstyle input[type="submit"]{
+               width:150px;
+}
+#customexbtn{
+               /*background-image:url('/img/bg-lines.jpg');*/
+               padding-right:3px;
+               padding-left:3px;
+               border:1px #c3baab solid;
+               /*color:#45332b;*/
+
+
+}
+.noprestext > a{
+          color:white !important;
+}
+#checklist{
+          background-color:#dfdd94;
+          border:1px solid #c9c893;
+          padding:5px;
+          color:#5b5a3b;
+}
+/* USER - Coach - Check daily report completion*/
+.donedailyreport{
+          background-color:#b1f119;
+          border:1px solid #94ca13;
+          
+         margin-bottom:3px;
+          border-radius:3px;
+          -moz-border-radius:3px;
+          font-family:'Trebuchet MS';
+          font-style:italic;
+          font-size:11px;
+}
+.notdonedailyreport{
+          background-color:#eeeeee;
+          border:1px solid #dedede;
+          margin-bottom:3px;
+
+          border-radius:3px;
+          -moz-border-radius:3px;
+          font-family:'Trebuchet MS';
+          font-style:italic;
+          font-size:11px;
+}
+/* User - Coach - Exerciseplan */
+#addexercisetoplan input[type="text"],#addexercisetoplan select{
+               width:80%;
+               color:#1d1613;/*6e5858;*/
+               height:18px;
+               font-size: 11px;
+               padding:0px;
+               border:1px solid #131010;
+                background-color:  #eaeff1; /*181111;*/
+                background-image: none;
+                font-family: "Trebuchet MS", sans-serif;
+}
+#exercisesinthisplan li , .exercisesinthisplan li{
+               list-style-image: url(../img/task.png);
+               font-size: 11px;
+               font-style: italic;
+               color: #907b7b;               
+}
+.taskdot li{
+               list-style-image: url(../img/athletes.png);
+               font-size: 11px;
+               font-style: italic;
+               color: #907b7b;
+}
+
+#exercisesinthisplan .plantitle{
+               border-bottom:1px dashed #303b3f;
+               color:#354d52;
+
+}
+
+ #athleteselection{
+                width:75%;
+              font-size: 10px;
+}
+#attachathletebtn{
+               width:20%;
+               font-size:10px;
+}
+.modtext{
+          font-size:10px;
+          font-weight:normal;
+          font-family: Tahoma,sans-serif;
+}
+.planhistbutton{
+          margin:1px;
+          font-size:11px;
+          font-family: 'Trebuchet MS', sans-serif;
+          font-style:italic;
+          color:#d2e6eb;
+          padding:0px;
+          background-color:#6498a6;
+          border:0px;
+}
+#pastplan{
+          background-color: #cbb69a;
+          -moz-border-radius:3px;
+          border:1px solid #a9906f;
+          padding:4px;
+}
+#attachathletebtn, #athleteselection{
+               border:1px solid #2a2a2a;
+               background-color: #232323;
+               color:#baa9a9;
+}
+.athmenu button{
+               font-size: 10px;
+               font-style: italic;
+}
+.athmenu button:active {
+               font-weight: bold;
+}
+.athmenu1, .athmenu1 a{
+               padding:2px;
+               background-color:#bbd23c;
+               color:#575a3c;
+               border:none;
+}
+.athmenu2{
+               padding:2px;
+               background-color:#d2ad3c;
+               color:#6a5514;
+                border:none;
+}
+.athmenu3{
+               padding:2px;
+               background-color:#e0625b;
+               color:#6a1814;
+                border:none;
+}
+#weeklyalert,.redness{
+               margin:4px;
+               padding:10px;
+               font-style: italic;
+               font-weight:bold;
+               font-size:13px;
+               color:#f1dcbc;
+               background-color:#c33c3c;
+               border: 2px solid #882121;
+}
+/* Super User */
+#AIDlist, #CIDlist, #attachathletetocoach {
+               border:1px solid #2a2a2a;
+               background-color: #232323;
+               color:#baa9a9;
+               width:100%;
+}
+#attachathletetocoach{
+               padding:4px;
+}
+#attachresult{
+               background-color: #ece28f;
+               border:1px solid #d9af5e;
+               color:#866029;
+               text-align: center;
+}
+
+/* General - Message */
+.messagelistitem{
+    width:90%;
+    border: 1px solid #abc0c6;
+    background-color:#c3d2d6;
+    padding:5px;
+    margin:5px auto 5px auto;
+}
+.messagehead{
+    font-weight:bold;
+    color:#242e2f;
+}
+.messagebody{
+    font-size:10px;
+    text-indent:15px;
+    padding:5px;
+    font-weight:normal;
+}
+
+/* General - Interface */
+.errors{
+    color:red;
+    font-size:10px;
+    font-weight:bold;
+}
+.alertmessage{
+               
+}
+#browserwarning{
+	font-size:10px;
+	line-height:11px;
+	text-align:center;
+	width:80%;
+	margin:9px auto 9px auto;
+	padding:4px;	
+}
+.warning{
+               font-size: 12px;
+               color:#5d251c;
+               background-color: #eadcca;
+               border:2px solid #bca991;
+               padding:5px;
+               margin: 15px auto 0px auto;
+               
+}
+.red{
+    border: 1px solid #283f45;
+    background-color:#4e6b73;
+    padding:5px;
+    margin:5px auto 5px auto;
+    color:#c0d7de;
+}
+.skipped{
+	color:#d23434  !important;
+}
+.done{
+	color:#8da83a !important;
+}
+
+input[type="text"], input[type="password"]{
+    height:25px;
+    padding:6px;
+    font-size:24px;
+    /*background:url('../img/innershadowtextfield.jpg') repeat-x #232323;*/
+    background-color: #b8ccd0;
+    border:1px solid #6e8a8f;
+    color:#293c3f;
+    font-weight:bold;
+    font-family: "Trebuchet MS", sans-serif;
+    font-style:italic;
+}
+label{
+               font-size: 16px;
+               font-weight: bold;
+               font-style: italic;
+}
+input[type="submit"]{
+               width:100px;
+               border:1px solid #370901;
+               background-color: #350901;
+               font-size: 13px;
+               font-weight: bold;
+               font-style: italic;
+               padding:5px;
+               color:#ae5138;
+}
+.smallinputbox input[type="text"]{
+               width:150px;
+               height:12px;
+               font-size: 10px;
+}
+.smallinputbox, .smallinputbox label{
+               font-size: 12px;
+}
+.tinytext{
+          font-size:10px;
+}
+fieldset{
+               border: 1px solid #858080;
+               padding:5px;
+               margin:4px;
+}
+legend{
+               font-size: 9px;
+               color:#858080;
+               font-style: italic;
+}
+button.smallbutton{
+               font-size: 10px;
+               border:1px solid #4c3131;
+               background-color:#4b2929;
+               color:#be9c9c;
+}
+
+/* MISC */
+.rawdata{
+               width:100%;
+               height:250px;
+               font-size:10px;
+               white-space: nowrap;
+}
+.nowarp{
+               white-space: nowrap;
+}
+#headimgnowrap{
+               width:627px;
+               white-space: nowrap;
+               margin:0px auto 0px auto;
+}
+#pagestatus{
+               position: absolute;
+               bottom:0px;
+               text-align:center;
+               z-index: 100;
+               font-size: 12px;
+               background-color: #EEEE98;
+               color:#DC6C0E;
+               padding:5px;
+               margin:0px auto 6px auto;
+               min-width: 200px;
+}
+#pagestatus img{
+               vertical-align: middle;
+}
+
+a{
+               cursor: pointer;
+}
+.reload{
+               font-size: 10px;
+               font-weight: normal;
+               font-style:italic;
+}
+.line{
+    background-color: #BCCDD1;
+    border-bottom: 1px solid #FFFFFF;
+    margin:4px;
+    height:1px;
+}
+.linedotted{
+    border-bottom: 1px dashed #659cab;
+    margin:4px;
+     border-top: 1px dashed #487d8b;
+}
+.noborder{
+               border:none;
+}
+.valignbottom{
+               vertical-align: bottom;
+}
+.valigntop{
+               vertical-align: top;
+}
+
+.valignmiddle{
+               vertical-align: middle;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: "Trebuchet MS", sans-serif;
+    font-style:italic;
+    margin:0em;
+    color:#3E4142;
+}
+
+.topmaincont{
+    background-color:#26201a;
+    font-style:italic;
+}
+.pad10{
+    padding: 10px;
+}
+img {
+    vertical-align: bottom;
+    border:0px;
+    }
+.floatleft{
+    float:left;
+}
+.floatright{
+    float:right;
+}
+.textcenter{
+    text-align:center;
+}
+.textright{
+               text-align: right;
+}
+.textleft{
+               text-align: left;
+}
+.texttop{
+    vertical-align:top;
+}
+.clear{
+    clear:both;
+}
+a {
+    outline:none;
+    color:#98c4d2;
+    text-decoration:none;
+}
+a.none{color:#444c4e;}
+a.border:hover{
+    color:#dd6161;
+    text-decoration:none;
+    padding:3px;
+    background-color:#2b2121;
+}
+p.hint{
+    margin:0px 0px 0px 0px;
+    color:#ddb661;
+}
+.underline{
+              border-bottom:1px dashed #714e4e;
+}
+.width50percent{
+    width:50%;
+}
+.smallinput{
+               width:100px !important;
+               height:13px !important;
+               padding:3px !important;
+               font-size:12px !important;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style:italic !important;
+               color: #3b3737 !important;
+               background-image: none !important;
+               background-color: #e7e7e7 !important;
+               border:1px solid #b2b2b2 !important;
+}
+/*font colour series */
+.lightredfont{
+               color:#d87272;
+}
+.smalllightredfont{
+               color:#d87272;
+               font-size: 10px;
+}
+/* width series */
+.width200{
+               width:200px;
+}
+.width100{
+               width:100px;
+}
+.width150{
+               width:150px;
+}
+.width300{
+               width:300px;
+}
+.width350px{
+               width:350px;
+}
+.width400{
+               width:400px;
+}
+.width500{
+               width:500px;
+}
+.width30percent{
+               width:30%;
+}
+.width70percent{
+               width:70% !important;
+}
+width20percent{
+               width:20% !important;
+}
+.padright35percent{
+               padding-right: 35%;
+}
+
+.logofloat{
+    background-color: #182325;
+    border: 1px solid #273b3f;
+}
+#emailaddress{
+               width: 300px;
+               height:15px;
+               font-size:12px;
+               background-color: #FFFFFF;
+               padding:2px;
+}
+/* History Page */
+#illnesshistorylist{
+               border: 2px solid #c8ae86;
+               background-color: #e2d3ba;
+               width:100%;
+}
+.tdheader{
+               background-color: #b78065;
+               color:#FFFFFF;
+}
+.darkline{
+               background-color: #d7b99c;
+}
+
+/* Tooltip */
+/* TipTip CSS - Version 1.2 */
+
+#tiptip_holder {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
+#tiptip_holder.tip_top {
+	padding-bottom: 5px;
+}
+
+#tiptip_holder.tip_bottom {
+	padding-top: 5px;
+}
+
+#tiptip_holder.tip_right {
+	padding-left: 5px;
+}
+
+#tiptip_holder.tip_left {
+	padding-right: 5px;
+}
+
+#tiptip_content {
+	font-size: 13px;
+                    font-family: "Trebuchet MS", sans-serif;
+                    font-style: italic;
+	color: #fff;
+	text-shadow: 0 0 2px #000;
+	padding: 4px 8px;
+	border: 1px solid rgba(255,255,255,0.25);
+	background-color: rgb(25,25,25);
+	background-color: rgba(25,25,25,0.92);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(#000));
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	box-shadow: 0 0 3px #555;
+	-webkit-box-shadow: 0 0 3px #555;
+	-moz-box-shadow: 0 0 3px #555;
+}
+
+#tiptip_arrow, #tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+#tiptip_holder.tip_top #tiptip_arrow {
+	border-top-color: #fff;
+	border-top-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow {
+	border-bottom-color: #fff;
+	border-bottom-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow {
+	border-right-color: #fff;
+	border-right-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow {
+	border-left-color: #fff;
+	border-left-color: rgba(255,255,255,0.35);
+}
+
+#tiptip_holder.tip_top #tiptip_arrow_inner {
+	margin-top: -7px;
+	margin-left: -6px;
+	border-top-color: rgb(25,25,25);
+	border-top-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+	margin-top: -5px;
+	margin-left: -6px;
+	border-bottom-color: rgb(25,25,25);
+	border-bottom-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_right #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -5px;
+	border-right-color: rgb(25,25,25);
+	border-right-color: rgba(25,25,25,0.92);
+}
+
+#tiptip_holder.tip_left #tiptip_arrow_inner {
+	margin-top: -6px;
+	margin-left: -7px;
+	border-left-color: rgb(25,25,25);
+	border-left-color: rgba(25,25,25,0.92);
+}
+/* Alert page */
+.alertathname{
+               background-color: #351b1b;
+               padding: 4px;
+               border: 2px solid #543e3e;
+               color: #ffffff;
+               margin:2px;
+
+}
+.alertbox{
+               padding:3px;
+               margin:2px;
+               margin-left: 30px;
+               background-color: #e7cece;
+
+}
+.revalert{
+               color:#ffcf4c;
+               padding:2px;
+               font-size:9px;
+               background-color:#5c4231;
+}
+/* Webkit Hacks  */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#tiptip_content {
+		padding: 4px 8px 5px 8px;
+		background-color: rgba(45,45,45,0.88);
+	}
+	#tiptip_holder.tip_bottom #tiptip_arrow_inner {
+		border-bottom-color: rgba(45,45,45,0.88);
+	}
+	#tiptip_holder.tip_top #tiptip_arrow_inner {
+		border-top-color: rgba(20,20,20,0.92);
+	}
+}
+
+#message-text{
+          width:100px !important;
+          height:15px !important;
+          border:1px solid #FFFFFF !important;
+          background-color: #FFFFFF !important;
+          font-size: 11px !important;
+          padding:0px 0px 0px 0px !important;
+}
+#message-notify{
+          width:146px !important;
+          height:15px !important;
+          border:1px solid #FFFFFF !important;
+          background-color: #FFFFFF !important;
+          font-size: 10px !important;
+          padding:0px 0px 0px 0px !important;
+}
+#message-submit{
+          font-size:10px;
+          background-color: #bbd23c;
+          color:#242e2f;
+          border:1px solid #788223;
+}
+#message-body{
+          background-color: #FFFFFF;
+          border:1px solid #7d7d7d;
+          margin-top:3px;
+          font-size: 11px;
+          color:#1c1c1c;
+          padding:2px;
+          width:95%;
+          max-height:200px;
+          overflow: -moz-scrollbars-vertical;
+          overflow-x:hidden;
+          overflow-y:scroll
+          margin-left:auto;
+          margin-right:auto;
+          text-align: left;
+          line-height: 12px;
+}
+.message-head{
+          margin-bottom:0em;
+          color:#ffe400;
+          text-align: left;
+          font-weight: bold;
+}
+.fontcolor-A{
+          color:#2f2e2d;
+          font-weight: bold !important;
+}
+.fontcolor-C{
+          color:#e31414;
+          font-weight:bold !important;
+}
+.fontcolor-S{
+          color:#ff7e00;
+          font-weight:bold !important;
+}
+.msg-date{
+          font-size: 5px !important;
+          line-height: 4px;
+          color:#d7d2ce;
+}
+.msgdiv{
+          border-top:1px dotted #e0e0e0;
+          border-bottom:none;
+          border-right:none;
+          border-left:none;
+          
+}
+.fincom{
+          border:1px solid #cdcdcd;
+          background-color:#e9e9e9;
+          padding:2px;
+}

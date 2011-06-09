@@ -1,0 +1,39 @@
+<div class="topmaincont pad10">
+    <table style="width:100%;"><tr><td class="width150 valigntop">
+    <div id="menu">
+    <?php echo $this->menu; ?>
+    </div>
+    </td>
+                              <td class="valigntop">
+    <div id="usercpcontent">
+                 <h1>Athletes</h1>
+        <div class="line"></div>
+        <h5>These are the athletes who are currently training under you. You have the ability to attach an unassigned athlete to yourself.</h5>
+        <br/>
+        <ul class="taskdot width70percent">
+        <?php foreach($this->athletelist as $al) : ?>
+                       <li class="cviewath"> <?php echo $al["name"].' '.$al["surname"]; ?> <span class="athmenu">
+                                      <a href="/coach/plans/planid/<?php echo $al["planid"];?>" class="athmenu1 rounded3">View plan.</a>
+                                      <a href="/print/printplan/planid/<?php echo $al["planid"];?>" class="athmenu2 rounded3" >Print plan.</a>
+                                     <!--<a class="athmenu3 rounded3" id="cviewath<?php echo $al["athleteid"] ?>" > Detach this athlete</a>--></span></li>
+        <?php endforeach; ?>
+        </ul>
+        <!--<fieldset class="rounded">
+                       <legend>Unassigned athletes</legend>
+        <select id="AIDlist" class="width70percent" >
+                       <?php foreach($this->ua as $ua) : ?>
+                       <option value="<?php echo $ua["userid"]; ?>"><?php echo $ua["name"].' '.$ua["surname"] ?>
+                       </option>
+                       <?php endforeach; ?>
+        </select>
+                       <button id="doattach" class="width20percent">Attach athlete</button>
+        </fieldset>-->
+        <div class="alertmessage" id="attachresult"></div> 
+        <div class="clear"></div>
+    </div>
+                              </td></tr></table>
+
+
+    <div class="clear"></div>
+</div>
+<div id="pagediv"></div>

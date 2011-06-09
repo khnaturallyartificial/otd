@@ -1,0 +1,33 @@
+#illnesslist,#severitylist,#durationlist,#activitylevellist{
+               font-size:12px;
+               font-family: 'Trebuchet MS', sans-serif;
+               font-style: italic;
+}
+#illnessparams{
+               text-align: center;
+}
+
+#addedillness{
+               padding: 5px;
+               margin:3px;
+               border: 2px solid #c5a669;
+               background-color:#f2eee1;
+               color: #5d211c;
+               
+}
+
+#predicted_snatch, #predicted_cj, #bw{
+               width:40px;
+               height: 15px;
+               background-color:#FFFFFF;
+               border: 1px solid #b0b0b0;
+               font-size:12px;
+               font-style:italic;
+               padding:2px;
+               margin:3px;
+}
+
+.redfont{
+               color:#a13131;
+               font-weight: bold;
+}
