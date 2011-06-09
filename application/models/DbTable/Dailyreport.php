@@ -43,7 +43,7 @@ class Application_Model_DbTable_Dailyreport extends Zend_Db_Table_Abstract {
                                       ->where("userid = ?",$userid)->where("date = ?",$today);
                               $result = $this->_db->fetchAll($select);
                               if(count($result)>0){
-                                             return true;
+                                              return true;
                               }
                               else{
                                              return false;
