@@ -1053,6 +1053,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $pc = array();
                               $squat = array();
                               $pjfr = array();
+	          $fbp = array();
                               $date = array();
 	          $q = "";
 
@@ -1062,7 +1063,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                                                            FROM `markedexerciseplanview`
                                                                            WHERE (`userid` = $userid)
                                                                                           AND (`date` BETWEEN '".date("Y-m-d",$endingstamp)."' AND '".date("Y-m-d",$beginningstamp)."')
-                                                                                          AND (`exerciseid` IN (237,205,233,234,231))
+                                                                                          AND (`exerciseid` IN (237,205,233,234,231,201))
                                                                           GROUP BY `exerciseid`";
 			$q .= "\n".$sql;
                                                             $result = $this->_db->query($sql)->fetchAll();
@@ -1075,6 +1076,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                                             array_unshift($cj, $holder[233] ? $holder[233] : 0);
                                                             array_unshift($pc, $holder[234] ? $holder[234] : 0);
                                                             array_unshift($squat, $holder[231] ? $holder[231] : 0);
+			array_unshift($fbp, $holder[201] ? $holder[201]:0);
                                                             //array_unshift($pjfr, $holder[39] ? $holder[39] : 0);
                                                             array_unshift($date, date("j M Y",$endingstamp));
 
@@ -1093,7 +1095,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["cj"]){$DataSet->AddPoint($cj, "Serie3");}
                                 if($data["pc"]){$DataSet->AddPoint($pc, "Serie4");}
                                 if($data["squat"]){$DataSet->AddPoint($squat, "Serie5");}
-                               //if($data["pjfr"]){$DataSet->AddPoint($pjfr, "Serie6");}
+                               if($data["fbp"]){$DataSet->AddPoint($fbp, "Serie6");}
                                $DataSet->AddPoint($date,"Serie7");
 
                                  if($data["snatch"]){$DataSet->AddSerie("Serie1");}
@@ -1101,7 +1103,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["cj"]){$DataSet->AddSerie("Serie3");}
                                 if($data["pc"]){$DataSet->AddSerie("Serie4");}
                                 if($data["squat"]){$DataSet->AddSerie("Serie5");}
-                               //if($data["pjfr"]){$DataSet->AddSerie("Serie6");}
+                               if($data["fbp"]){$DataSet->AddSerie("Serie6");}
                                $DataSet->SetAbsciseLabelSerie("Serie7");
 
                                   if($data["snatch"]){$DataSet->SetSerieName("Holds","Serie1");}
@@ -1109,7 +1111,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["cj"]){$DataSet->SetSerieName("Jamaican Press","Serie3");}
                                 if($data["pc"]){$DataSet->SetSerieName("Board Press","Serie4");}
                                 if($data["squat"]){$DataSet->SetSerieName("Bottoms","Serie5");}
-                               //if($data["pjfr"]){$DataSet->SetSerieName("Power Jerk \r\n(From racks)", "Serie6");}
+                               if($data["fbp"]){$DataSet->SetSerieName("Formal B. Press", "Serie6");}
                                $DataSet->SetYAxisName("Weight (kg.)");
                                $DataSet->SetYAxisUnit("");
 
@@ -1144,7 +1146,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["cj"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie3");}
                                 if($data["pc"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie4");}
                                 if($data["squat"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie5");}
-                                if($data["pjfr"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie6");}
+                                if($data["fbp"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie6");}
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",7);
                                $Test->drawLegend(600,35,$DataSet->GetDataDescription(),255,255,255,true);

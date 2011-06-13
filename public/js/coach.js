@@ -180,7 +180,7 @@ $(document).ready(function(){
                               $("#chart9").attr('src','/chart/index/mode/drawchart_movements/limit/10/userid/'+$("#athlete_graph_list :selected").attr('value')+
                                              '/snatch/1/psnatch/1/pc/1/cj/1/squat/1/pjfr/1');
 	               $("#chart90").attr('src','/chart/index/mode/drawchart_movementspl/limit/10/userid/'+$("#athlete_graph_list :selected").attr('value')+
-                                             '/snatch/1/psnatch/1/pc/1/cj/1/squat/1/pjfr/1');
+                                             '/snatch/1/psnatch/1/pc/1/cj/1/squat/1/pjfr/1/fbp/1');
 	               $("#chart20").attr('src','/chart/index/mode/drawchart_weightHydration/limit/10/userid/'+$("#athlete_graph_list :selected").attr('value')+
                                              '/bwm/1/bwe/1/um/1/ue/1');
 
