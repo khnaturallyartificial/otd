@@ -152,6 +152,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                function drawchart($data){ //data in associative array
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
 
                               if($data["sdate"] && $data["edate"]){
                                              $range = " and `date` between '".$this->cleanDate($data["sdate"])."' and '".  $this->cleanDate($data["edate"])."' ";
@@ -165,6 +166,9 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               if($data["limit"]){
                                              $query .= " limit ".$data["limit"];
 		     $timelim = (int)$data["limit"];
+		     if((int)$data["limit"]>10){
+		               $expand = ((int)$data["limit"]-10)*10;
+		     }
                               }
                               else{
                                              $query .= " limit 10";
@@ -233,11 +237,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache->GetFromCache("Graph1",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(780,270);
+                               $Test = new pChart(780+$expand,270);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,680,200);
-                               $Test->drawFilledRoundedRectangle(7,7,693,263,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,695,265,5,230,230,230);
+                               $Test->setGraphArea(70,30,680+$expand,200);
+                               $Test->drawFilledRoundedRectangle(7,7,693+$expand,263,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,695+$expand,265,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,0);
                                $Test->drawGrid(4,true,228,228,228);
@@ -257,7 +261,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
 	            $Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(), "Serie2");
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->drawLegend(690,35,$DataSet->GetDataDescription(),255,255,255);
+                               $Test->drawLegend(690+$expand,35,$DataSet->GetDataDescription(),255,255,255);
                                $Test->setFontProperties("Fonts/tahoma.ttf",10);
                                $Test->drawTitle(60,22,"Training load",50,50,50,585);
                                $Cache->WriteToCache("Graph1",$DataSet->GetData(),$Test);
@@ -267,8 +271,14 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                function drawchart_average($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
                               $limit = (int) $data["limit"];
                               if(!$limit){$limit=10;}
+	          else{
+		if($limit > 10){
+		          $expand = ($limit -10)*10;
+		}
+	          }
                               $tstamp = time();
                               $thisweek = date("W",$tstamp);
                               $thisyear = (int) date("Y", $tstamp);
@@ -327,14 +337,14 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache = new pCache();
                               $Cache->GetFromCache("Graph5",$DataSet->GetData());
                                 // Initialise the graph
-                                $Test = new pChart(660,390);
+                                $Test = new pChart(660+$expand,390);
 
                                 // Prepare the graph area
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->setGraphArea(60,40,595,290,true);
+                                $Test->setGraphArea(60,40,595+$expand,290,true);
 
-                                  $Test->drawFilledRoundedRectangle(7,7,656,383,5,240,240,240);
-                                $Test->drawRoundedRectangle(5,5,658,385,5,230,230,230);
+                                  $Test->drawFilledRoundedRectangle(7,7,656+$expand,383,5,240,240,240);
+                                $Test->drawRoundedRectangle(5,5,658+$expand,385,5,230,230,230);
                               $Test->drawGraphArea(255,255,255,TRUE);
 
                                 // Initialise graph area
@@ -362,7 +372,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
 
                                 // Write the legend (box less)
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->drawLegend(530,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE);
+                                $Test->drawLegend(530+$expand,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE);
 
                                 // Write the title
                                 $Test->setFontProperties("Fonts/MankSans.ttf",10);
@@ -377,10 +387,12 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                function drawchart_averagedaily($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
                               $limit = (int) $data["limit"];
                               if(!$limit){$limit=10;}
 	          else{
 		$limit = max(array($limit-2,0));
+		$expand = $limit > 10 ? ($limit - 10)*10 : 0;
 	          }
                               $tstamp = time();
                               $thisweek = date("W",$tstamp);
@@ -461,14 +473,14 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache = new pCache();
                               //$Cache->GetFromCache("Graph5",$DataSet->GetData());
                                 // Initialise the graph
-                                $Test = new pChart(660,390);
+                                $Test = new pChart(660+$expand,390);
 
                                 // Prepare the graph area
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->setGraphArea(60,40,595,290,true);
+                                $Test->setGraphArea(60,40,595+$expand,290,true);
 
-                                  $Test->drawFilledRoundedRectangle(7,7,656,383,5,240,240,240);
-                                $Test->drawRoundedRectangle(5,5,658,385,5,230,230,230);
+                                  $Test->drawFilledRoundedRectangle(7,7,656+$expand,383,5,240,240,240);
+                                $Test->drawRoundedRectangle(5,5,658+$expand,385,5,230,230,230);
                               $Test->drawGraphArea(255,255,255,TRUE);
 
                                 // Initialise graph area
@@ -496,7 +508,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
 
                                 // Write the legend (box less)
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->drawLegend(530,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE);
+                                $Test->drawLegend(530+$expand,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE);
 
                                 // Write the title
                                 $Test->setFontProperties("Fonts/MankSans.ttf",10);
@@ -642,6 +654,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                function drawchart_geninfo($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
 
                               if($data["sdate"] && $data["edate"]){
                                              $range = " and `date` between '".$this->cleanDate($data["sdate"])."' and '".  $this->cleanDate($data["edate"])."' ";
@@ -656,10 +669,12 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               if($data["limit"]){
                                              $query .= " limit ".$data["limit"];
 		     $timelim = (int)$data["limit"];
+		     $expand = $timelim > 10? ($timelim - 10)*10:0;
                               }
                               else{
                                              $query .= " limit 10";
 		     $timelim = 10;
+		     
                               }
                               $sql = $query;
                               $result = $this->_db->query($sql)->fetchAll();
@@ -739,11 +754,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache->GetFromCache("Graph2",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(700,310);
+                               $Test = new pChart(700+$expand,310);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,580,240);
-                               $Test->drawFilledRoundedRectangle(7,7,593,303,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,595,305,5,230,230,230);
+                               $Test->setGraphArea(70,30,580+$expand,240);
+                               $Test->drawFilledRoundedRectangle(7,7,593+$expand,303,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,595+$expand,305,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                 $Test->setFixedScale(0,6,12);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,1);
@@ -768,7 +783,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["gf"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie6");}
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",7);
-                               $Test->drawLegend(595,35,$DataSet->GetDataDescription(),255,255,255,true);
+                               $Test->drawLegend(595+$expand,35,$DataSet->GetDataDescription(),255,255,255,true);
                                $Test->setFontProperties("Fonts/tahoma.ttf",10);
                                $Test->drawTitle(60,22,"Fatigue and Recovery",50,50,50,585);
                                $Cache->WriteToCache("Graph2",$DataSet->GetData(),$Test);
@@ -921,7 +936,9 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
            function drawchart_movements($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
                               $limit = $data["limit"] ? (int) $data["limit"] : 10;
+	          $expand = $limit > 10 ? ($limit -10)*10 : 0;
 	          $timelim = $limit;
 
                               $beginningstamp = (int) strtotime(date("Y",time())."W".date("W", time()));
@@ -1000,11 +1017,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache->GetFromCache("Graph9",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(700,310);
+                               $Test = new pChart(700+$expand,310);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,580,240);
-                               $Test->drawFilledRoundedRectangle(7,7,593,303,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,595,305,5,230,230,230);
+                               $Test->setGraphArea(70,30,580+$expand,240);
+                               $Test->drawFilledRoundedRectangle(7,7,593+$expand,303,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,595+$expand,305,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,1);
                                $Test->drawGrid(4,true,228,228,228);
@@ -1028,7 +1045,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["pjfr"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie6");}
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",7);
-                               $Test->drawLegend(600,35,$DataSet->GetDataDescription(),255,255,255,true);
+                               $Test->drawLegend(600+$expand,35,$DataSet->GetDataDescription(),255,255,255,true);
                                $Test->setFontProperties("Fonts/tahoma.ttf",10);
                                $Test->drawTitle(60,22,"Current max per exercise",50,50,50,585);
                                $Cache->WriteToCache("Graph9",$DataSet->GetData(),$Test);
@@ -1038,7 +1055,9 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
            function drawchart_movementspl($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
                               $limit = $data["limit"] ? (int) $data["limit"] : 10;
+	          $expand = $limit > 10 ? ($limit - 10) * 10 : 0;
 	          $timelim = $limit;
 
                               $beginningstamp = (int) strtotime(date("Y",time())."W".date("W", time()));
@@ -1121,11 +1140,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache->GetFromCache("Graph90",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(700,310);
+                               $Test = new pChart(700+$expand,310);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,580,240);
-                               $Test->drawFilledRoundedRectangle(7,7,593,303,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,595,305,5,230,230,230);
+                               $Test->setGraphArea(70,30,580+$expand,240);
+                               $Test->drawFilledRoundedRectangle(7,7,593+$expand,303,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,595+$expand,305,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,1);
                                $Test->drawGrid(4,true,228,228,228);
@@ -1149,7 +1168,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 if($data["fbp"]){$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie6");}
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",7);
-                               $Test->drawLegend(600,35,$DataSet->GetDataDescription(),255,255,255,true);
+                               $Test->drawLegend(600+$expand,35,$DataSet->GetDataDescription(),255,255,255,true);
                                $Test->setFontProperties("Fonts/tahoma.ttf",10);
                                $Test->drawTitle(60,22,"Current max per exercise",50,50,50,585);
                                $Cache->WriteToCache("Graph9",$DataSet->GetData(),$Test);
@@ -1223,6 +1242,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
            function drawchart_sleepquan($data){
                           error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand =0;
 
                               if($data["sdate"] && $data["edate"]){
                                              $range = " and `date` between '".$this->cleanDate($data["sdate"])."' and '".  $this->cleanDate($data["edate"])."' ";
@@ -1236,6 +1256,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               if($data["limit"]){
                                              $query .= " limit ".$data["limit"];
 		     $timelim = $data["limit"];
+		     $expand = $timelim > 10 ? ($timelim - 10)*10: 0;
                               }
                               else{
                                              $query .= " limit 10";
@@ -1287,11 +1308,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               $Cache->GetFromCache("Graph7",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(700,270);
+                               $Test = new pChart(700+$expand,270);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,680,200);
-                               $Test->drawFilledRoundedRectangle(7,7,693,263,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,695,265,5,230,230,230);
+                               $Test->setGraphArea(70,30,680+$expand,200);
+                               $Test->drawFilledRoundedRectangle(7,7,693+$expand,263,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,695+$expand,265,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,0);
                                $Test->drawGrid(4,true,228,228,228);
@@ -1320,6 +1341,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
            function drawchart_totalreps($data){
                               error_reporting(0);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
 
                               /*$query = "select `date`, `session1_duration` , `session1_intensity` from `dailyreport` where `userid` = ".$userid." order by `date` DESC";
                               if($data["limit"]){
@@ -1355,6 +1377,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               if($data["limit"]){
                                              $query .= " limit ".$data["limit"];
 		     $timelim = (int)$data["limit"];
+		     $expand = $timelim >10? ($timelim - 10)*10: 0;
                               }
                               else{
                                              $query .= " limit 10";
@@ -1442,11 +1465,11 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               //$Cache->GetFromCache("Graph4",$DataSet->GetData());
 
                                // Initialise the graph
-                               $Test = new pChart(730,370);
+                               $Test = new pChart(730+$expand,370);
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->setGraphArea(70,30,620,300);
-                               $Test->drawFilledRoundedRectangle(7,7,693,363,5,240,240,240);
-                               $Test->drawRoundedRectangle(5,5,695,365,5,230,230,230);
+                               $Test->setGraphArea(70,30,620+$expand,300);
+                               $Test->drawFilledRoundedRectangle(7,7,693+$expand,363,5,240,240,240);
+                               $Test->drawRoundedRectangle(5,5,695+$expand,365,5,230,230,230);
                                $Test->drawGraphArea(237,237,237,true);
                                 //$Test->setFixedScale(0,10,20);
                                $Test->drawScale($DataSet->GetData(),$DataSet->GetDataDescription(),SCALE_START0,150,150,150,true,45,2,true);
@@ -1459,7 +1482,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                // Draw the line graph
                               // $Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
                                //$Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
-                               $Test->drawLineGraph($DataSet->GetData(),$DataSet->GetDataDescription());
+                               $Test->drawBarGraph($DataSet->GetData(),$DataSet->GetDataDescription());
                                $Test->drawPlotGraph($DataSet->GetData(),$DataSet->GetDataDescription(),3,2,255,255,255);
                                 $Test->setFontProperties("Fonts/tahoma.ttf",7);
                                 $Test->setColorPalette(0,112,55,46);
@@ -1469,7 +1492,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                                 //$Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(), "Serie2");
                                // Finish the graph
                                $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                               $Test->drawLegend(630,35,$DataSet->GetDataDescription(),255,255,255);
+                               $Test->drawLegend(630+$expand,35,$DataSet->GetDataDescription(),255,255,255);
                                $Test->setFontProperties("Fonts/tahoma.ttf",10);
                                $Test->drawTitle(60,22,"Prescribed vs Actual total reps done",50,50,50,585);
 
@@ -1480,6 +1503,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
            function drawchart_weightHydration($data){
                               error_reporting(E_ALL^E_NOTICE);
                               $userid = (int) $data["userid"];
+	          $expand = 0;
 
                               if($data["sdate"] && $data["edate"]){
                                              $range = " and `date` between '".addslashes($data["sdate"])."' and '". addslashes($data["edate"])."' ";
@@ -1494,6 +1518,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               if($data["limit"]){
                                              $query .= " limit ".$data["limit"];
 		     $timelim = (int)$data["limit"];
+		     $expand = $timelim > 10 ? ($timelim - 10)*10 : 0;
                               }
                               else{
                                              $query .= " limit 10";
@@ -1590,14 +1615,14 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
                               //$Cache = new pCache();
                               //$Cache->GetFromCache("Graph20",$DataSet->GetData());
                                 // Initialise the graph
-                                $Test = new pChart(720,390);
+                                $Test = new pChart(720+$expand,390);
 
                                 // Prepare the graph area
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->setGraphArea(60,40,595,290,true);
+                                $Test->setGraphArea(60,40,595+$expand,290,true);
 
-                                  $Test->drawFilledRoundedRectangle(7,7,656,383,5,240,240,240);
-                                $Test->drawRoundedRectangle(5,5,658,385,5,230,230,230);
+                                  $Test->drawFilledRoundedRectangle(7,7,656+$expand,383,5,240,240,240);
+                                $Test->drawRoundedRectangle(5,5,658+$expand,385,5,230,230,230);
                               $Test->drawGraphArea(255,255,255,TRUE);
 
                                 // Initialise graph area
@@ -1652,7 +1677,7 @@ class Application_Model_DrawChart extends Zend_Db_Table_Abstract {
 	            $Test->writeValues($DataSet->GetData(),$DataSet->GetDataDescription(),"Serie8",0);
                                 // Write the legend (box less)
                                 $Test->setFontProperties("Fonts/tahoma.ttf",8);
-                                $Test->drawLegend(620,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE); 
+                                $Test->drawLegend(620+$expand,5,$DataSet->GetDataDescription(),0,0,0,0,0,0,150,150,150,FALSE);
 
                                 // Write the title
                                 $Test->setFontProperties("Fonts/MankSans.ttf",10);
